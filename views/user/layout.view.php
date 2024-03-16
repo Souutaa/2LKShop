@@ -31,6 +31,7 @@ if (isLoggedIn()) {
   <link rel="stylesheet" href="/2LKShop/public/css/simple-notify.min.css" />
   <link rel="stylesheet" href="/2LKShop/public/css/index.css">
   <script src="/2LKShop/public/js/jquery.min.js"></script>
+  <script src="/2LKShop/public/json/provinces.json"></script>
   <script src="/2LKShop/public/js/simple-notify.min.js"></script>
   <script src="/2LKShop/public/js/sweetalert2.all.min.js"></script>
 </head>
@@ -46,47 +47,54 @@ if (isLoggedIn()) {
         </div>
         <form class="search__form">
           <?php if ($_SESSION['showNav'] == true): ?>
-            <input type="text" class="fontAwesome search__input" name="searchInformation"
-              placeholder="&#xf002;   Search" />
+                                                              <input type="text" class="fontAwesome search__input" name="searchInformation"
+                                                                placeholder="&#xf002;   Search" />
           <?php endif ?>
         </form>
         <nav class="nav-user">
           <?php if ($_SESSION['isLoggedIn'] == true): ?>
-            <a class="nav-user__icon-box" href="<?php echo getPath($routes, 'viewCart') ?>">
-              <svg class="icon">
-                <use xlink:href="/2LKShop/public/images/SVG/symbol-defs.svg#icon-location-shopping"></use>
-              </svg>
-            </a>
-            <div class="nav-user__user">
-              <img src="/2LKShop/public/images/productImg/Image.png" alt="User photo" class="nav-user__user-photo" />
-              <ul class="nav-user__dropdown">
-                <li class="nav-user__user-info">
-                  <h3 class="nav-user__user-name font-size-4 text-color--1">
-                    <?php echo $user->getUsername(); ?>
-                  </h3>
-                  <span class="nav-user__user-email font-size-3 text-color--4">
-                    <?php echo $user->getEmail(); ?>
-                  </span>
-                </li>
-                <li class="nav-user__options">
-                  <a href="<?php echo $routes->get('viewOrders')->getPath() ?>" class="nav-user__option font-size-2">Đơn
-                    hàng</a>
-                  <a href="<?php echo $routes->get('viewPersonalInfo')->getPath() ?>"
-                    class="nav-user__option font-size-2">Thông tin cá nhân</a>
-                </li>
-                <li class="nav-user__log-out">
-                  <a href="<?php echo $routes->get('logout')->getPath() ?>" class="log-out btn">
-                    <i class="fa-solid fa-right-from-bracket color--red font-size-1"></i>
-                    <span class="color--red font-size-2">Sign Out</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </nav>
+                                      <a class="nav-user__icon-box" href="<?php echo getPath($routes, 'viewCart') ?>">
+                                                                <svg class="icon">
+                                                                  <use xlink:href="/2LKShop/public/images/SVG/symbol-defs.svg#icon-location-shopping"></use>
+                                                                </svg>
+                                                              </a>
+                                                              <div class="nav-user__user">
+                                                                <!-- <img src="/2LKShop/public/images/productImg/Image.png" alt="User photo" class="nav-user__user-photo" /> -->
+                                                                <?php
+                                                                $image = '/2LKShop/public/images/user_avatar/user_avatar_' . $user->getUsername() . '.jpg';
+                                                                if (file_exists($image) == 0): ?>
+                                                                    <img src="/2LKShop/public/images/productImg/Image.png" alt="User photo" class="nav-user__user-photo" />
+                                                                <?php else: ?>
+                                                                    <img src="<?php echo $image ?>" alt="User photo" class="nav-user__user-photo" />
+                                                                <?php endif ?>
+                                                                <ul class="nav-user__dropdown">
+                                                                  <li class="nav-user__user-info">
+                                                                    <h3 class="nav-user__user-name font-size-4 text-color--1">
+                                                                      <?php echo $user->getUsername(); ?>
+                                                                    </h3>
+                                                                    <span class="nav-user__user-email font-size-3 text-color--4">
+                                                                      <?php echo $user->getEmail(); ?>
+                                                                    </span>
+                                                                  </li>
+                                                                  <li class="nav-user__options">
+                                                                    <a href="<?php echo $routes->get('viewOrders')->getPath() ?>" class="nav-user__option font-size-2">Đơn
+                                                                      hàng</a>
+                                                                    <a href="<?php echo $routes->get('viewPersonalInfo')->getPath() ?>"
+                                                                      class="nav-user__option font-size-2">Thông tin cá nhân</a>
+                                                                  </li>
+                                                                  <li class="nav-user__log-out">
+                                                                    <a href="<?php echo $routes->get('logout')->getPath() ?>" class="log-out btn">
+                                                                      <i class="fa-solid fa-right-from-bracket color--red font-size-1"></i>
+                                                                      <span class="color--red font-size-2">Sign Out</span>
+                                                                    </a>
+                                                                  </li>
+                                                                </ul>
+                                                              </div>
+                                                            </nav>
         <?php endif ?>
         <?php if ($_SESSION['isLoggedIn'] == false): ?>
-          <a href="login" class="btn btn__secondary">Đăng nhập</a>
-          <a href="register" class="btn btn__secondary btn__secondary--active">Đăng kí</a>
+                                                            <a href="login" class="btn btn__secondary">Đăng nhập</a>
+                                                            <a href="register" class="btn btn__secondary btn__secondary--active">Đăng kí</a>
         <?php endif ?>
         </nav>
       </div>
@@ -111,10 +119,10 @@ if (isLoggedIn()) {
           <img src="/2LKShop/public/images/productImg/Image.png" alt="User's Avatar" class="user__img" />
           <div class="user__sidebar--top-right">
             <h3 class="user__name font-size-4 text-color--1">
-              <?php echo $user -> getCurrentfirstNameInDB($user->getUsername())[0]. " " .  $user -> getCurrentLastNameInDB($user->getUsername())[0] ?>
+              <?php echo $user->getCurrentfirstNameInDB($user->getUsername())[0] . " " . $user->getCurrentLastNameInDB($user->getUsername())[0] ?>
             </h3>
             <span class="user__email font-size-3 text-color--4">
-              <?php echo $user -> getCurrentEmailInDB($user->getUsername())[0]?>
+              <?php echo $user->getCurrentEmailInDB($user->getUsername())[0] ?>
             </span>
           </div>
         </div>
@@ -134,7 +142,7 @@ if (isLoggedIn()) {
         </div>
       </div>
       <div class="user__container user__container--no-bg">
-        <?php require("$name.view.php"); ?>
+        <?php require ("$name.view.php"); ?>
       </div>
     </section>
     <footer class="footer mt-4">

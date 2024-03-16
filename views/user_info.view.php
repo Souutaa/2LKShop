@@ -4,9 +4,9 @@
           <div class="user__sidebar--top">
             <img src="./img/Image.png" alt="User's Avatar" class="user__img" />
             <div class="user__sidebar--top-right">
-              <h3 class="user__name font-size-4 text-color--1">Hà Quốc Vĩ</h3>
+              <h3 class="user__name font-size-4 text-color--1">Trịnh Quang Long</h3>
               <span class="user__email font-size-3 text-color--4">
-                quocvi1701@gmail.com
+                trinhq011@gmail.com
               </span>
             </div>
           </div>
@@ -50,7 +50,7 @@
                   id="userName"
                   name="account"
                   value=""
-                  placeholder="Hà Quốc Vĩ"
+                  placeholder="Trịnh Quang Long"
                   class="form__input"
                 />
               </div>

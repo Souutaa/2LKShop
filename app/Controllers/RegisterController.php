@@ -20,7 +20,7 @@ class RegisterController
         $user = new User();
         return $user->getGmailInDB();
     }
-  
+
     public function indexAction(RouteCollection $routes, Request $request)
     {
         startSession();
@@ -38,21 +38,25 @@ class RegisterController
 
     public function createAccount($user)
     {
-        if (isset($_POST['userName']) && isset($_POST['fistName'])
-            && isset($_POST['lastName']) && isset($_POST['Email']) && isset($_POST['Password'])) {
+        if (
+            isset($_POST['userName']) && isset($_POST['fistName'])
+            && isset($_POST['lastName']) && isset($_POST['Email']) && isset($_POST['Password'])
+        ) {
             $username = $_POST['userName'];
             $password = $_POST['Password'];
+            $data = ['userName' => $username, 'Password' => $password];
             $FirstNname = $_POST['fistName'];
             $LastNname = $_POST['lastName'];
             $Email = $_POST['Email'];
             # code...
-            $user->createAccount($username, $password);
+            $user->createAccount($data);
             $user->createUserDetail($username, $FirstNname, $LastNname, $Email);
             $user->createAccountGroup($username);
         }
     }
 
-    public function createUserAction(RouteCollection $routes, Request $request) {
+    public function createUserAction(RouteCollection $routes, Request $request)
+    {
         print_r($_POST);
         $user = new User();
         $user->createUser($_POST);

@@ -15,24 +15,39 @@ use App\Models\Warranties;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouteCollection;
 
-class UserController {
+class UserController
+{
 
-  public function getEditUserFormAction(RouteCollection $routes, Request $request) {
+  public function getEditUserFormAction(RouteCollection $routes, Request $request)
+  {
     startSession();
     $user = new User();
-    $user -> getUser(json_decode($_GET['username']));
+    $user->getUser(json_decode($_GET['username']));
     $roles = new Roles();
     $roles->getAll();
     require_once APP_ROOT . '/views/admin/users/edit.view.php';
   }
 
-  public function updateUserInfoAction(RouteCollection $routes, Request $request) {
+  public function updateUserInfoAction(RouteCollection $routes, Request $request)
+  {
     startSession();
     $user = new User();
+    //từ từ bình tĩn
     $user->updateUserDetail($_POST);
   }
 
-  public function deactiveUserAction(RouteCollection $routes, Request $request) {
+  public function updateUserAvatar(RouteCollection $routes, Request $request)
+  {
+    startSession();
+    $user = new User();
+    $user = unserialize($_SESSION['user']);
+    //từ từ bình tĩnh
+    // print_r($_SESSION['USER']);
+    $user->UpdateImage($_FILES, $user->getUsername());
+  }
+
+  public function deactiveUserAction(RouteCollection $routes, Request $request)
+  {
     $user = new User();
     $user->deactiveUser(json_decode($_POST['username']));
   }

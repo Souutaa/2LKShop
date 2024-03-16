@@ -63,8 +63,8 @@
           <label for="example-select" class="form__label u-margin-bottom-small">Role</label>
           <select class="form-select" name="role-id" id="example-select">
             <?php foreach ($roles->roles as $role): ?>
-                                                    <option value=<?php echo $role->getRoleId() ?>                                         <?php if ($role->getRoleId() == $user->getUserGroup())
-                                                                                                  echo "selected" ?>><?php echo $role->getRoleName() ?></option>
+              <option value=<?php echo $role->getRoleId() ?><?php if ($role->getRoleId() == $user->getUserGroup())
+                                                                  echo "selected" ?>><?php echo $role->getRoleName() ?></option>
             <?php endforeach; ?>
           </select>
         </div>
@@ -113,7 +113,7 @@
 
 <script>
   async function getProvincesHanlder() {
-    const provinceAPI = 'http://127.0.0.1:8000/api/?depth=2';
+    const provinceAPI = './public/json/provinces.json';
     const res = await fetch(provinceAPI);
     const jsonData = await res.json();
     let valueProvince = '<?php echo $user->getCurrentCityInDB($user->getUsername())[0] ?>';

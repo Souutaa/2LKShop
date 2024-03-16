@@ -165,11 +165,11 @@ class User
     return $this;
   }
 
-  
+
 
   /**
    * Get the value of firstName
-   */ 
+   */
   public function getFirstName()
   {
     return $this->firstName;
@@ -179,7 +179,7 @@ class User
    * Set the value of firstName
    *
    * @return  self
-   */ 
+   */
   public function setFirstName($firstName)
   {
     $this->firstName = $firstName;
@@ -189,7 +189,7 @@ class User
 
   /**
    * Get the value of lastName
-   */ 
+   */
   public function getLastName()
   {
     return $this->lastName;
@@ -199,7 +199,7 @@ class User
    * Set the value of lastName
    *
    * @return  self
-   */ 
+   */
   public function setLastName($lastName)
   {
     $this->lastName = $lastName;
@@ -209,7 +209,7 @@ class User
 
   /**
    * Get the value of email
-   */ 
+   */
   public function getEmail()
   {
     return $this->email;
@@ -219,7 +219,7 @@ class User
    * Set the value of email
    *
    * @return  self
-   */ 
+   */
   public function setEmail($email)
   {
     $this->email = $email;
@@ -229,7 +229,7 @@ class User
 
   /**
    * Get the value of detailedAddress
-   */ 
+   */
   public function getDetailedAddress()
   {
     return $this->detailedAddress;
@@ -239,7 +239,7 @@ class User
    * Set the value of detailedAddress
    *
    * @return  self
-   */ 
+   */
   public function setDetailedAddress($detailedAddress)
   {
     $this->detailedAddress = $detailedAddress;
@@ -249,7 +249,7 @@ class User
 
   /**
    * Get the value of ward
-   */ 
+   */
   public function getWard()
   {
     return $this->ward;
@@ -259,7 +259,7 @@ class User
    * Set the value of ward
    *
    * @return  self
-   */ 
+   */
   public function setWard($ward)
   {
     $this->ward = $ward;
@@ -269,7 +269,7 @@ class User
 
   /**
    * Get the value of district
-   */ 
+   */
   public function getDistrict()
   {
     return $this->district;
@@ -279,7 +279,7 @@ class User
    * Set the value of district
    *
    * @return  self
-   */ 
+   */
   public function setDistrict($district)
   {
     $this->district = $district;
@@ -289,7 +289,7 @@ class User
 
   /**
    * Get the value of province
-   */ 
+   */
   public function getProvince()
   {
     return $this->province;
@@ -299,7 +299,7 @@ class User
    * Set the value of province
    *
    * @return  self
-   */ 
+   */
   public function setProvince($province)
   {
     $this->province = $province;
@@ -309,7 +309,7 @@ class User
 
   /**
    * Get the value of phoneNumber
-   */ 
+   */
   public function getPhoneNumber()
   {
     return $this->phoneNumber;
@@ -319,7 +319,7 @@ class User
    * Set the value of phoneNumber
    *
    * @return  self
-   */ 
+   */
   public function setPhoneNumber($phoneNumber)
   {
     $this->phoneNumber = $phoneNumber;
@@ -327,20 +327,24 @@ class User
     return $this;
   }
 
-  public function getFullName() {
-    return $this->firstName." ".$this->lastName;
+  public function getFullName()
+  {
+    return $this->firstName . " " . $this->lastName;
   }
 
   // Crud function
 
-  public function createAccount($username, $password)
+  public function createAccount(array $data)
   {
     $db = connect();
-    $q_Account = "INSERT INTO `account`(`Username`, `Password`, `Created_at`) VALUES (:username,:password,current_timestamp())";
+    $this->username = $data['userName'];
+    $this->password = $data['Password'];
+    //$q_Account = "INSERT INTO `account`(`Username`, `Password`, `Created_at`) VALUES (:username,:password,current_timestamp())";
+    $q_Account = "INSERT INTO `account`(`Username`, `Password`, `Created_at`) VALUES ('$this->username','$this->password',current_timestamp())";
     $result = $db->prepare($q_Account);
-    $result -> bindParam(':username', $username);
-    $result -> bindParam(':password', $password);
-    $result -> execute();
+    // $result->bindParam(':username', $username);
+    // $result->bindParam(':password', $password);
+    $result->execute();
   }
 
   public function createUserDetail($username, $FirstName, $LastName, $Email)
@@ -348,15 +352,16 @@ class User
     $db = connect();
 
     //Main
-    $sql= "INSERT INTO userdetail(username, FirstName, LastName, Email) Values('$username', '$FirstName', '$LastName', '$Email')";
+    $sql = "INSERT INTO userdetail(username, FirstName, LastName, Email) Values('$username', '$FirstName', '$LastName', '$Email')";
 
     // $sql= "INSERT INTO userdetail(username, FullName, Email) Values('$username', '$FullName','$Email')";
     echo $sql;
     $result = $db->prepare($sql);
-    $result -> execute();
+    $result->execute();
   }
 
-  public function updateUserDetail($data) {
+  public function updateUserDetail($data)
+  {
     $db = connect();
     $updateInfoSql = "UPDATE userdetail SET userdetail.FirstName= :FirstName, 
             userdetail.LastName= :LastName, 
@@ -391,9 +396,9 @@ class User
     $db = connect();
     $q_AccountGroup = "INSERT INTO `accountgroup`(`username`, `accountypeid`) VALUES (:username,'CUSTOMER')";
     $result = $db->prepare($q_AccountGroup);
-    $result -> bindParam(':username', $username);
+    $result->bindParam(':username', $username);
     // $result -> bindParam(':accountypeid', $accountypid);
-    $result -> execute();
+    $result->execute();
   }
 
   public function read(string $username, string $password)
@@ -437,8 +442,8 @@ class User
     }
 
     $sql = "SELECT * FROM `userdetail` WHERE `username` = :username";
-    $statement = $db -> prepare($sql);
-    $statement -> bindParam(':username', $username);
+    $statement = $db->prepare($sql);
+    $statement->bindParam(':username', $username);
     $statement->execute();
 
     $data = $statement->fetch(PDO::FETCH_ASSOC);
@@ -482,8 +487,8 @@ class User
     $this->userGroup = $data['accountypeid'];
 
     $sql = "SELECT * FROM `userdetail` WHERE `username` = :username";
-    $statement = $db -> prepare($sql);
-    $statement -> bindParam(':username', $username);
+    $statement = $db->prepare($sql);
+    $statement->bindParam(':username', $username);
     $statement->execute();
 
     $data = $statement->fetch(PDO::FETCH_ASSOC);
@@ -501,8 +506,9 @@ class User
 
     return $this;
   }
-  
-  public function UpdateUserInfo($userName,$lastName, $firstName, $email, $phoneNumber, $City, $District, $detailAddress){
+
+  public function UpdateUserInfo($userName, $lastName, $firstName, $email, $phoneNumber, $City, $District, $detailAddress)
+  {
     $db = connect();
     $sql = "UPDATE userdetail SET userdetail.FirstName='$firstName', 
             userdetail.LastName='$lastName', 
@@ -512,11 +518,21 @@ class User
             userdetail.Phone_Number='$phoneNumber' 
             WHERE userdetail.username='$userName'";
     $result = $db->prepare($sql);
-    $result -> execute();
+    $result->execute();
   }
 
+  public function UpdateImage(array $files, $userName)
+  {
+    if ($files['user__avatar']['error'] == UPLOAD_ERR_OK) {
+      $tmp_name = $_FILES["user__avatar"]["tmp_name"];
+      $name = basename($_FILES["user__avatar"]["name"]);
+      $ext = pathinfo($name, PATHINFO_EXTENSION);
+      move_uploaded_file($tmp_name, APP_ROOT . "/public/images/user_avatar/user_avatar_$userName.$ext");
+    }
+  }
 
-  public function getAccountInDB(){
+  public function getAccountInDB()
+  {
     $db = connect();
     $sql = "SELECT Username,Password FROM account";
     $stm = $db->query($sql);
@@ -524,7 +540,8 @@ class User
 
   }
 
-  public function getGmailInDB(){
+  public function getGmailInDB()
+  {
     $db = connect();
     $sql = "SELECT Email FROM userdetail";
     $stm = $db->query($sql);
@@ -532,59 +549,67 @@ class User
 
   }
 
-  public function getCurrentfirstNameInDB($userName){
+  public function getCurrentfirstNameInDB($userName)
+  {
     $db = connect();
     $sql = "SELECT userdetail.firstName FROM userdetail WHERE userdetail.username='$userName'";
     $stm = $db->query($sql);
     return $stm->fetch();
   }
 
-  public function getCurrentLastNameInDB($userName){
+  public function getCurrentLastNameInDB($userName)
+  {
     $db = connect();
     $sql = "SELECT userdetail.LastName FROM userdetail WHERE userdetail.username='$userName'";
     $stm = $db->query($sql);
     return $stm->fetch();
   }
 
-  public function getCurrentEmailInDB($userName){
+  public function getCurrentEmailInDB($userName)
+  {
     $db = connect();
     $sql = "SELECT userdetail.Email FROM userdetail WHERE userdetail.username='$userName'";
     $stm = $db->query($sql);
     return $stm->fetch();
   }
 
-  public function getCurrentDetailedAddressInDB($userName){
+  public function getCurrentDetailedAddressInDB($userName)
+  {
     $db = connect();
     $sql = "SELECT userdetail.detailedAddress FROM userdetail WHERE userdetail.username='$userName'";
     $stm = $db->query($sql);
     return $stm->fetch();
   }
 
-  public function getCurrentDistrictInDB($userName){
+  public function getCurrentDistrictInDB($userName)
+  {
     $db = connect();
     $sql = "SELECT userdetail.District FROM userdetail WHERE userdetail.username='$userName'";
     $stm = $db->query($sql);
     return $stm->fetch();
   }
 
-  public function getCurrentCityInDB($userName){
+  public function getCurrentCityInDB($userName)
+  {
     $db = connect();
     $sql = "SELECT userdetail.`City/Province` FROM userdetail WHERE userdetail.username='$userName'";
     $stm = $db->query($sql);
     return $stm->fetch();
   }
 
-  public function getCurrentTelInDB($userName){
+  public function getCurrentTelInDB($userName)
+  {
     $db = connect();
     $sql = "SELECT userdetail.Phone_Number FROM userdetail WHERE userdetail.username='$userName'";
     $stm = $db->query($sql);
     return $stm->fetch();
   }
 
-  public function createUser(array $data) {
+  public function createUser(array $data)
+  {
     $db = connect();
     $createUserSql = "INSERT INTO `account` (`Username`, `Password`, `Created_at`, `Modified_at`, `Deleted_at`)
-                       VALUES (:username, :pwd, current_timestamp(), NULL, NULL)";
+    VALUES (:username, :pwd, current_timestamp(), NULL, NULL)";
     $createUserStm = $db->prepare($createUserSql);
     $createUserStm->execute([
       ":username" => $data['Username'],
@@ -611,7 +636,8 @@ class User
     ]);
   }
 
-  public function deactiveUser(string $username) {
+  public function deactiveUser(string $username)
+  {
     $db = connect();
     $deactiveSql = "UPDATE `account` 
                     SET `Deleted_at` = current_timestamp()

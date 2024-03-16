@@ -23,6 +23,19 @@ if (isLoggedIn()) {
   .font-error{
     color: red;
   }
+
+  .DisplayImg{
+    display: inline-block !important;
+  }
+  .btn{
+    display: none;
+  }
+  .None{
+    display: none !important;
+  }
+  .font-error{
+    color: red;
+  }
 </style>
 
 
@@ -34,6 +47,20 @@ if (isLoggedIn()) {
     </p>
   </div>
   <div class="user__information-form">
+    <form action="" id="userImage" enctype="multipart/form-data">
+      <div class="form__field-box u-margin-bottom-medium">
+        <div class="form__field"> 
+            <label for="user__avatar" class="form__label u-margin-bottom-small">Thumbnail</label>
+            <input type="file" id="user__avatar" name='user__avatar' class="form-control" accept="image/*" />
+        </div>
+        <div class="form__field"> 
+          <label for="user__first-name" class="form__label u-margin-bottom-small">Nhấn nút để thay đổi</label>
+          <button type="submit"  id="btnThayDoiImg"  class=" btn DisplayImg btn__primary btn__primary--active u-center-text">
+          Thay đổi
+          </button>      
+        </div>
+      </div>
+    </form>
     <form action="" id="userInfo">
       <div class="form__field-box u-margin-bottom-medium">
         <div class="form__field">
@@ -91,8 +118,34 @@ if (isLoggedIn()) {
   </div>
 </div>
 <script>
+  $(document).ready(() => {   
+      $('#userImage').submit(function (e) {
+        e.preventDefault();
+        var formData = new FormData(this);
+        console.log(formData)
+        formData.append('userID', "<?php echo $user->getUsername() ?>")
+        $.ajax({
+          type: "POST",
+          url: "<?php echo getPath($routes, 'user') ?>",
+          data: formData,
+          success: function (res) {
+            Swal.fire({
+              title: 'Success!',
+              text: 'Product successfully added!',
+              icon: 'success',
+              confirmButtonTeNxt: 'Cool!'
+            }).then(() => {
+              location.reload();
+            })
+          },
+          contentType: false,
+          processData: false
+        })
+      })
+  })
+
   async function getProvincesHanlder() {
-    const provinceAPI = 'http://127.0.0.1:8000/api/?depth=2';
+    const provinceAPI = './public/json/provinces.json';
     console.log(provinceAPI);
     const res = await fetch(provinceAPI);
     const jsonData = await res.json();
@@ -158,6 +211,11 @@ if (isLoggedIn()) {
 let btnSave = document.querySelector('#btnSave');
 let btnHuy = document.querySelector('#btnHuy');
 let btnThayDoi = document.querySelector('#btnThayDoi');
+
+let btnSaveImg = document.querySelector('#btnSaveImg');
+let btnHuyImg = document.querySelector('#btnHuyImg');
+let btnThayDoiImg = document.querySelector('#btnThayDoiImg');
+
 let errorAll = document.querySelectorAll('.error');
 // let formInputAll = document.querySelectorAll('.form-js');
 $('.form-js').prop('disabled', true)
@@ -171,6 +229,10 @@ function SuaHoacHuy() {
   btnHuy.classList.remove('Display');
   btnSave.classList.remove('Display');
   btnThayDoi.classList.add('Display')
+
+  btnHuyImg.classList.remove('DisplayImg');
+  btnSaveImg.classList.remove('DisplayImg');
+  btnThayDoiImg.classList.add('DisplayImg')
   
 }
 
@@ -182,6 +244,10 @@ function xuLyNutThayDoi() {
   btnHuy.classList.add('Display');
   btnSave.classList.add('Display');
   btnThayDoi.classList.remove('Display')
+
+  btnHuyImg.classList.add('DisplayImg');
+  btnSaveImg.classList.add('DisplayImg');
+  btnThayDoiImg.classList.remove('DisplayImg')
   
 }
 let value_FirstName = document.querySelector('#user__first-name');
@@ -205,10 +271,10 @@ function xuLyNutHuy() {
   // console.log($('#user__first-name').val());
 
   async function getProvincesHanlder() {
-    const provinceAPI = 'http://127.0.0.1:8000/api/?depth=2';
+    const provinceAPI = './public/json/provinces.json';
     const res = await fetch(provinceAPI);
     const jsonData = await res.json();
-    const jsonData = ECHO jsonProvine.json();
+    //const jsonData = ECHO jsonProvine.json();
     let valueProvince = '<?php echo $user->getCurrentCityInDB($user->getUsername())[0] ?>';
     let valueDistrict = '<?php echo $user->getCurrentDistrictInDB($user->getUsername())[0] ?>';
     let check = 0;
@@ -232,7 +298,7 @@ function xuLyNutHuy() {
       }
     }
 
- 
+
     // quận hiện tại của tài khoản đó
     for (let i = 0; i < jsonData.length; i++) {
       for (let index = 0; index < jsonData[i].districts.length; index++) {
@@ -248,7 +314,6 @@ function xuLyNutHuy() {
       }
       
     }
-   
   }
 
   $(document).ready(function(e) {
