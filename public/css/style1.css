@@ -280,7 +280,7 @@ fieldset input {
 }
 .btn__primary--active,
 .btn__primary:hover {
-  background-color: #1c64f2;
+  background-color: #28a745;
   color: #ffffff !important;
   outline: none;
 }
@@ -290,7 +290,7 @@ fieldset input {
 }
 .btn__secondary--active,
 .btn__secondary:hover {
-  background-color: #1a56db;
+  background-color: #0E9F6E;
   color: #ffffff !important;
   outline: none;
 }
@@ -302,7 +302,7 @@ fieldset input {
 }
 .btn__territory--active,
 .btn__territory:hover {
-  background-color: #1c64f2;
+  background-color: #0E9F6E;
   color: #ffffff !important;
   outline: none;
 }
@@ -431,13 +431,13 @@ fieldset input {
   padding: 1rem 2rem;
   border-radius: 10px;
   transition: all 0.2s;
-  color: #1a56db;
+  color: #057A55;
 }
 .dropdown__item:hover {
   background-color: #ffffff;
 }
 .dropdown__item:hover .dropdown__link {
-  color: #1c64f2;
+  color: #057A55;
 }
 
 .dropdown__link {
@@ -499,7 +499,7 @@ fieldset input {
   transition: all 0.1s;
 }
 .nav-user__option:hover {
-  color: #1c64f2;
+  color: #0E9F6E;
   font-weight: 600;
 }
 
@@ -589,7 +589,7 @@ fieldset input {
 }
 
 .noUi-connect {
-  background-color: #1c64f2;
+  background-color: #31C48D;
 }
 
 .noUi-target.noUi-horizontal .noUi-tooltip {
@@ -647,7 +647,7 @@ fieldset input {
   cursor: pointer;
 }
 .search__button:hover i {
-  color: #1c64f2 !important;
+  color: #0E9F6E !important;
 }
 .search__button:focus {
   outline: none;
@@ -870,10 +870,10 @@ fieldset input {
 .form__input[type="checkbox"] {
   border-radius: 10px;
   display: inline-block;
-  accent-color: #1c64f2;
+  accent-color: #31C48D;
 }
 .form__input[type="checkbox"]:checked ~ label {
-  color: #1c64f2 !important;
+  color: #0E9F6E !important;
 }
 .form__option {
   font-size: 1.6rem;
@@ -936,7 +936,7 @@ fieldset input {
 }
 .pagination .page-link:hover,
 .pagination .page-link--active {
-  background-color: #1c64f2;
+  background-color: #057A55;
   border-radius: 100px;
   color: #ffffff;
 }
@@ -955,12 +955,12 @@ fieldset input {
 
 .pagination-number:hover,
 .pagination-button:not(.disabled):hover {
-  background: #fff;
+  background: #0E9F6E;
 }
 
 .pagination-number.active {
   color: #fff;
-  background: #0085b6;
+  background: #0E9F6E;
 }
 
 .footer {
@@ -1196,7 +1196,7 @@ fieldset input {
   background-color: #e5e7eb;
 }
 .sidebar__item:hover .sidebar__link {
-  color: #1c64f2 !important;
+  color: #31C48D !important;
 }
 
 .order-detail__container {
@@ -1329,7 +1329,7 @@ fieldset input {
   border-radius: 10px;
 }
 .product__img-item--active {
-  border: 5px solid #1c64f2;
+  border: 5px solid #0E9F6E;
 }
 
 .product__detail--container {
@@ -1389,7 +1389,7 @@ fieldset input {
 }
 
 .product__price--1 {
-  color: #1c64f2;
+  color: #0E9F6E;
 }
 
 .product__price--2 {
@@ -1705,11 +1705,11 @@ fieldset input {
   align-self: stretch;
 }
 .user-order__title:hover {
-  color: #1c64f2 !important;
+  color: #0E9F6E !important;
 }
 .user-order__title--active {
-  color: #1c64f2 !important;
-  border-bottom: 2px solid #1c64f2;
+  color: #0E9F6E !important;
+  border-bottom: 2px solid #0E9F6E;
 }
 
 .user-order__empty {
