@@ -17,8 +17,10 @@ use App\Models\Warranties;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouteCollection;
 
-class AdminController {
-  public function indexHomeAction(RouteCollection $routes, Request $request) {
+class AdminController
+{
+  public function indexHomeAction(RouteCollection $routes, Request $request)
+  {
     startSession();
     $name = 'home';
     $productSeller = new Dashboards();
@@ -26,12 +28,13 @@ class AdminController {
 
     $totalStatus = new Dashboards();
     $totalStatus->getTotalOrderStatus();
-    $RevenueOfMonth =new DashBoards();
+    $RevenueOfMonth = new DashBoards();
     $RevenueOfMonth->getRevenue();
     require_once APP_ROOT . '/views/admin/layout.view.php';
   }
 
-  public function indexProductAction(RouteCollection $routes, Request $request) {
+  public function indexProductAction(RouteCollection $routes, Request $request)
+  {
     startSession();
     $user = new User();
     $user = unserialize($_SESSION['user']);
@@ -51,7 +54,8 @@ class AdminController {
     require_once APP_ROOT . '/views/admin/layout.view.php';
   }
 
-  public function indexOrderAction(RouteCollection $routes, Request $request) {
+  public function indexOrderAction(RouteCollection $routes, Request $request)
+  {
     startSession();
     $user = new User();
     $user = unserialize($_SESSION['user']);
@@ -62,7 +66,7 @@ class AdminController {
     $statusCode = json_decode($_GET['statusCode'] ?? "0");
     $orders = new Orders();
     $orders->getAllOrders($statusCode);
-    if (isset($_GET['statusCode'])) {
+    if (isset ($_GET['statusCode'])) {
       $name = 'orders/order_list';
       require_once APP_ROOT . "/views/admin/$name.view.php";
     } else {
@@ -71,7 +75,8 @@ class AdminController {
     }
   }
 
-  public function indexUserAction(RouteCollection $routes, Request $request) {
+  public function indexUserAction(RouteCollection $routes, Request $request)
+  {
     startSession();
     $user = new User();
     $user = unserialize($_SESSION['user']);
@@ -87,7 +92,8 @@ class AdminController {
     require_once APP_ROOT . '/views/admin/layout.view.php';
   }
 
-  public function indexBrandAction(RouteCollection $routes, Request $request) {
+  public function indexBrandAction(RouteCollection $routes, Request $request)
+  {
     startSession();
     $user = new User();
     $user = unserialize($_SESSION['user']);
@@ -95,13 +101,14 @@ class AdminController {
       redirect(getPath($routes, 'homepage'));
       die();
     }
-    $name = 'brand/index';    
+    $name = 'brand/index';
     $BrandList = new Brands();
     $BrandList->getAllBrands();
     require_once APP_ROOT . '/views/admin/layout.view.php';
   }
 
-  public function indexCategoryAction(RouteCollection $routes, Request $request) {
+  public function indexCategoryAction(RouteCollection $routes, Request $request)
+  {
     startSession();
     $user = new User();
     $user = unserialize($_SESSION['user']);
@@ -109,12 +116,13 @@ class AdminController {
       redirect(getPath($routes, 'homepage'));
       die();
     }
-    $name = 'category/index';    
+    $name = 'category/index';
     $categories = new Categories();
     $categories->readAll();
     require_once APP_ROOT . '/views/admin/layout.view.php';
   }
-  public function indexRoleAction(RouteCollection $routes, Request $request) {
+  public function indexRoleAction(RouteCollection $routes, Request $request)
+  {
     startSession();
     $user = new User();
     $user = unserialize($_SESSION['user']);
@@ -128,7 +136,8 @@ class AdminController {
     require_once APP_ROOT . '/views/admin/layout.view.php';
   }
 
-  public function indexPermissionAction(RouteCollection $routes, Request $request) {
+  public function indexPermissionAction(RouteCollection $routes, Request $request)
+  {
     startSession();
     $user = new User();
     $user = unserialize($_SESSION['user']);
@@ -141,8 +150,9 @@ class AdminController {
     $name = 'permissions/index';
     require_once APP_ROOT . '/views/admin/layout.view.php';
   }
-  
-  public function indexPermissionGroupAction(RouteCollection $routes, Request $request) {
+
+  public function indexPermissionGroupAction(RouteCollection $routes, Request $request)
+  {
     startSession();
     $user = new User();
     $user = unserialize($_SESSION['user']);
