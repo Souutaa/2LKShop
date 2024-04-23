@@ -1,4 +1,5 @@
 <?php
+
 use App\Models\User;
 
 if (!isLoggedIn()) {
@@ -22,11 +23,8 @@ if (isLoggedIn()) {
   </title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;700;800&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="/2LKShop/public/css/bootstrap.min.css">
   <link rel="stylesheet" href="/2LKShop/public/css/simple-notify.min.css" />
   <link rel="stylesheet" href="/2LKShop/public/css/index.css">
@@ -143,7 +141,7 @@ if (isLoggedIn()) {
         </div>
       </div>
       <div class="user__container user__container--no-bg">
-        <?php require ("$name.view.php"); ?>
+        <?php require("$name.view.php"); ?>
       </div>
     </section>
     <footer class="footer mt-4">
@@ -206,4 +204,5 @@ if (isLoggedIn()) {
   </div>
 </body>
 <script scr="/2LKShop/public/js/index.js"></script>
+
 </html>

@@ -282,7 +282,7 @@ fieldset input {
 }
 .btn__primary--active,
 .btn__primary:hover {
-  background-color: #1c64f2;
+  background-color: #046C4E;
   color: #ffffff !important;
   outline: none;
 }
@@ -292,7 +292,7 @@ fieldset input {
 }
 .btn__secondary--active,
 .btn__secondary:hover {
-  background-color: #1a56db;
+  background-color: #046C4E;
   color: #ffffff !important;
   outline: none;
 }
@@ -304,7 +304,7 @@ fieldset input {
 }
 .btn__territory--active,
 .btn__territory:hover {
-  background-color: #1c64f2;
+  background-color: #046C4E;
   color: #ffffff !important;
   outline: none;
 }
@@ -439,7 +439,7 @@ fieldset input {
   background-color: #ffffff;
 }
 .dropdown__item:hover .dropdown__link {
-  color: #1c64f2;
+  color: #046C4E;
 }
 
 .dropdown__link {
@@ -501,7 +501,7 @@ fieldset input {
   transition: all 0.1s;
 }
 .nav-user__option:hover {
-  color: #1c64f2;
+  color: #046C4E;
   font-weight: 600;
 }
 
@@ -591,7 +591,7 @@ fieldset input {
 }
 
 .noUi-connect {
-  background-color: #1c64f2;
+  background-color: #046C4E;
 }
 
 .noUi-target.noUi-horizontal .noUi-tooltip {
@@ -649,7 +649,7 @@ fieldset input {
   cursor: pointer;
 }
 .search__button:hover i {
-  color: #1c64f2 !important;
+  color: #046C4E !important;
 }
 .search__button:focus {
   outline: none;
@@ -872,10 +872,10 @@ fieldset input {
 .form__input[type="checkbox"] {
   border-radius: 10px;
   display: inline-block;
-  accent-color: #1c64f2;
+  accent-color: #046C4E;
 }
 .form__input[type="checkbox"]:checked ~ label {
-  color: #1c64f2 !important;
+  color: #046C4E !important;
 }
 .form__option {
   font-size: 1.6rem;
@@ -938,7 +938,7 @@ fieldset input {
 }
 .pagination .page-link:hover,
 .pagination .page-link--active {
-  background-color: #1c64f2;
+  background-color: #046C4E;
   /* border-radius: 100px; */
   color: #ffffff;
 }
@@ -1176,7 +1176,7 @@ fieldset input {
   background-color: #e5e7eb;
 }
 .sidebar__item:hover .sidebar__link {
-  color: #1c64f2 !important;
+  color: #046C4E !important;
 }
 
 .order-detail__container {
@@ -1308,7 +1308,7 @@ fieldset input {
   border-radius: 10px;
 }
 .product__img-item--active {
-  border: 5px solid #1c64f2;
+  border: 5px solid #046C4E;
 }
 
 .product__detail--container {
@@ -1368,7 +1368,7 @@ fieldset input {
 }
 
 .product__price--1 {
-  color: #1c64f2;
+  color: #046C4E;
 }
 
 .product__price--2 {
@@ -1680,11 +1680,11 @@ fieldset input {
   align-self: stretch;
 }
 .user-order__title:hover {
-  color: #1c64f2 !important;
+  color: #046C4E !important;
 }
 .user-order__title--active {
-  color: #1c64f2 !important;
-  border-bottom: 2px solid #1c64f2;
+  color: #046C4E !important;
+  border-bottom: 2px solid #046C4E;
 }
 
 .user-order__empty {
