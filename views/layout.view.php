@@ -65,7 +65,9 @@ if (isLoggedIn()) {
                   </svg>
                 </a>
                 <div class="nav-user__user">
-                  <img src="/2LKShop/public/images/productImg/Image.png" alt="User photo" class="nav-user__user-photo" />
+                  <?php
+                    checkImg($user)
+                  ?> 
                   <ul class="nav-user__dropdown">
                     <li class="nav-user__user-info">
                       <h3 class="nav-user__user-name font-size-4 text-color--1">
