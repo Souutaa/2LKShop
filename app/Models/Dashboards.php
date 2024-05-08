@@ -3,14 +3,17 @@
 namespace App\Models;
 
 use PDO;
-class Dashboards{
-    public $productSeller =[];
-    public $totalStatus =[];
-    public $categorySeller=[];
 
-    public $RevenueOfMonth=[];
+class Dashboards
+{
+    public $productSeller = [];
+    public $totalStatus = [];
+    public $categorySeller = [];
 
-    public function getRevenue(){
+    public $RevenueOfMonth = [];
+
+    public function getRevenue()
+    {
         $db = connect();
 
         $query = ('SELECT SUM(`userorder`.`Total`) AS TONG , MONTH(`userorder`.`Created_at`) AS THANG
@@ -20,19 +23,20 @@ class Dashboards{
         $statement = $db->prepare($query);
         $statement->execute();
         $data = $statement->fetchAll(PDO::FETCH_ASSOC);
-    
+
         foreach ($data as $item) {
             $revenue = new DashBoard();
             $revenue->setMonth($item['THANG']);
             $revenue->seTotalRevenue($item['TONG']);
             $this->RevenueOfMonth[] = $revenue;
         }
-        
+
         $db = null;
         $query = null;
         return $this;
     }
-    public function getTotalCategorySeller(){
+    public function getTotalCategorySeller()
+    {
         $db = connect();
 
         $query = ('SELECT COUNT(`orderdetail`.`ProductId`)-1 AS totalCategorySeller, `category`.`CategoryName`
@@ -45,66 +49,80 @@ class Dashboards{
         $statement = $db->prepare($query);
         $statement->execute();
         $data = $statement->fetchAll(PDO::FETCH_ASSOC);
-    
+
         foreach ($data as $item) {
             $category = new DashBoard();
             $category->setTotalSellCategory($item['totalCategorySeller']);
             $category->setCategory($item['CategoryName']);
             $this->categorySeller[] = $category;
         }
-        
+
         $db = null;
         $query = null;
         return $this;
     }
-    public function getProductBestSeller(){
+    public function getProductBestSeller(int $topSearch)
+    {
         $db = connect();
 
-        $query = ('SELECT `product`.`Product_Name`, `product`.`price` ,`product`.`Created_at`, COUNT(`product_warranty`.`product_id`) as totalOrder, product_warranty.product_line
-                    FROM `product_warranty`
-                    LEFT JOIN `product` ON `product`.`Product_Line` = `product_warranty`.`product_line`
-                    WHERE `product_warranty`.`purchased_at` IS NOT NULL
-                    GROUP BY  `product_warranty`.`product_line`
-                    ORDER BY `product`.`Price` DESC, totalOrder DESC
-                    LIMIT 5
-                    ;');
+        $query = ("
+        SELECT `product`.`Product_Name`, `product`.`price` ,`product`.`Created_at`, COUNT(`product_warranty`.`product_id`) as totalOrder, product_warranty.product_line
+        FROM `product_warranty`
+        LEFT JOIN `product` ON `product`.`Product_Line` = `product_warranty`.`product_line`
+        LEFT JOIN `orderdetail` ON `orderdetail`.`ProductId`= `product_warranty`.`product_id`
+        LEFT JOIN `userorder` ON `userorder`.`OrderID` = `orderdetail`.`OrderID`
+        WHERE `product_warranty`.`purchased_at` IS NOT NULL 
+        AND `userorder`.`Status`=4
+        GROUP BY  `product_warranty`.`product_line`
+        ORDER BY `product`.`Price` DESC, totalOrder DESC
+        LIMIT $topSearch
+        ;");
+
+        // SELECT `product`.`Product_Name`, `product`.`price` ,`product`.`Created_at`, COUNT(`product_warranty`.`product_id`) as totalOrder, product_warranty.product_line
+        //             FROM `product_warranty`
+        //             LEFT JOIN `product` ON `product`.`Product_Line` = `product_warranty`.`product_line`
+        //             WHERE `product_warranty`.`purchased_at` IS NOT NULL
+        //             GROUP BY  `product_warranty`.`product_line`
+        //             ORDER BY `product`.`Price` DESC, totalOrder DESC
+        //             LIMIT $topSearch
         $statement = $db->prepare($query);
         $statement->execute();
         $data = $statement->fetchAll(PDO::FETCH_ASSOC);
-    
+
         foreach ($data as $item) {
             $product = new DashBoard();
-            $product->setProductLine( $item['Product_Name']);
+            $product->setProductLine($item['Product_Name']);
             $product->setPrice($item['price']);
             $product->setCreatedAt($item['Created_at']);
             $product->setTotalOrder($item['totalOrder']);
             $this->productSeller[] = $product;
         }
-        
+
         $db = null;
         $query = null;
         return $this;
     }
 
-    public function getTotalOrderStatus(){
+    public function getTotalOrderStatus()
+    {
 
         $db = connect();
 
-        $query = ('    SELECT COUNT(`orderstatus`.`StatusID`) AS TotalOfStatus, `orderstatus`.`StatusName`
-                         FROM `orderstatus`
-                        LEFT JOIN `userorder` ON `userorder`.`Status` = `orderstatus`.`StatusID`
-                      GROUP BY `orderstatus`.`StatusName`');
+        $query = ('SELECT COUNT(`orderstatus`.`StatusID`) AS TotalOfStatus, `orderstatus`.`StatusName`
+                    FROM `orderstatus`
+                    LEFT JOIN `userorder` ON `userorder`.`Status` = `orderstatus`.`StatusID`
+                    GROUP BY `orderstatus`.`StatusName`');
         $statement = $db->prepare($query);
         $statement->execute();
         $data = $statement->fetchAll(PDO::FETCH_ASSOC);
-    
+
         foreach ($data as $item) {
             $orderStatus = new DashBoard();
-            $orderStatus->setOrderStatusName( $item['StatusName']);
+            $orderStatus->setOrderStatusName($item['StatusName']);
             $orderStatus->setOrderStatusTotal($item['TotalOfStatus']);
             $this->totalStatus[] = $orderStatus;
         }
-        
+
         $db = null;
         $query = null;
         return $this;

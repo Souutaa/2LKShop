@@ -10,11 +10,8 @@
               <i class="mdi mdi-calendar-range font-13"></i>
             </span>
           </div>
-          <a href="javascript: void(0);" class="btn btn-primary ms-2">
+          <a href="javascript: void(0);" class="btn btn-primary ms-2"  id="reloadDashboard">
             <i class="mdi mdi-autorenew"></i>
-          </a>
-          <a href="javascript: void(0);" class="btn btn-primary ms-1">
-            <i class="mdi mdi-filter-variant"></i>
           </a>
         </form>
       </div>
@@ -28,32 +25,14 @@
     <div class="card">
       <div class="card-body">
         <h4 class="header-title mt-2 mb-3">Top Selling Products</h4>
-
+        <div>
+        <input type="text" value="5" class="form-control form-control-light" id="topSearch" />
+        <button id="topSearchBtn">Tìm kiếm</button>
+        </div>
         <div class="table-responsive">
           <table class="table table-centered table-nowrap table-hover mb-0">
-            <tbody>
-            <?php foreach ($productSeller->productSeller as $product): ?>
-              <tr>
-                <td style="w-75">
-                  <h5 class="font-14 my-1 fw-normal w-75 text-lg-left text-wrap">
-                  <?php echo $product->getProductLine() ?>
-                  </h5>
-                  <span class="text-muted font-13"><?php echo $product->getCreatedAt() ?></span>
-                </td>
-                <td>
-                  <h5 class="font-14 my-1 fw-normal"><?php echo number_format($product->getPrice()) ?>đ</h5>
-                  <span class="text-muted font-13">Price</span>
-                </td>
-                <td>
-                  <h5 class="font-14 my-1 fw-normal"><?php echo $product->getTotalOrder() ?></h5>
-                  <span class="text-muted font-13">Quantity</span>
-                </td>
-                <td>
-                  <h5 class="font-14 my-1 fw-normal"><?php echo number_format($product->getPrice()*$product->getTotalOrder()) ?>đ</h5>
-                  <span class="text-muted font-13">Amount</span>
-                </td>
-              </tr>
-              <?php endforeach ?>
+            <tbody id="topSellingTable">
+            
             </tbody>
           </table>
         </div>
@@ -75,21 +54,21 @@
 
         <div class="chart-widget-list">
         <?php foreach ($totalStatus->totalStatus as $status): ?>
-            <?php
-                $class = '';
-                if ($status->getOrderStatusName() == "Đã Giao") {
-                  $class = 'text-success';
-                } elseif ($status->getOrderStatusName() == "Đã Hủy") {
-                  $class = 'text-danger';
-                } elseif ($status->getOrderStatusName() == "Đang Giao") {
-                  $class = 'text-primary';
-                }
-                else $class= 'text-warning';
-            ?>
-            <p>
-                <i class="mdi mdi-square <?php echo $class ?>"></i> <?php echo $status->getOrderStatusName() ?>
-                <span class="float-end"> <?php echo $status->getOrderStatusTotal() ?></span>
-            </p>
+                                  <?php
+                                  $class = '';
+                                  if ($status->getOrderStatusName() == "Đã Giao") {
+                                    $class = 'text-success';
+                                  } elseif ($status->getOrderStatusName() == "Đã Hủy") {
+                                    $class = 'text-danger';
+                                  } elseif ($status->getOrderStatusName() == "Đang Giao") {
+                                    $class = 'text-primary';
+                                  } else
+                                    $class = 'text-warning';
+                                  ?>
+                                  <p>
+                                      <i class="mdi mdi-square <?php echo $class ?>"></i> <?php echo $status->getOrderStatusName() ?>
+                                      <span class="float-end"> <?php echo $status->getOrderStatusTotal() ?></span>
+                                  </p>
           <?php endforeach ?>
         </div>
       </div>
@@ -105,20 +84,20 @@
       <div class="card-body">
         <h4 class="header-title mb-4">Revenue of month</h4>
         <?php
-          $revenues = []; // Initialize an empty array to store monthly revenues
-
-          // Loop through 12 months of current year
-          for ($month = 1; $month <= 12; $month++) {
-            $revenue = 0; // Initialize revenue as 0
-            foreach ($RevenueOfMonth->RevenueOfMonth as $status) {
-              // Get the revenue for the current month if available
-              if ($status->getMonth() == $month ) {
-                $revenue = $status->getTotalRevenue();
-                break;
-              }
+        $revenues = []; // Initialize an empty array to store monthly revenues
+        
+        // Loop through 12 months of current year
+        for ($month = 1; $month <= 12; $month++) {
+          $revenue = 0; // Initialize revenue as 0
+          foreach ($RevenueOfMonth->RevenueOfMonth as $status) {
+            // Get the revenue for the current month if available
+            if ($status->getMonth() == $month) {
+              $revenue = $status->getTotalRevenue();
+              break;
             }
-            $revenues[] = $revenue; // Add monthly revenue to the array
           }
+          $revenues[] = $revenue; // Add monthly revenue to the array
+        }
         ?>
         <div id="average-revenue" class="apex-charts mb-4 mt-4">
         </div>
@@ -142,7 +121,7 @@
       },
       series: [
         <?php foreach ($totalStatus->totalStatus as $status): ?>
-          <?php echo $status->getOrderStatusTotal() ?>,
+                                <?php echo $status->getOrderStatusTotal() ?>,
         <?php endforeach ?>
       ],
       
@@ -164,6 +143,22 @@
   })
 
 </script>
+
+<script>
+  $(document).ready(function(){
+    $.ajax({
+        type: "GET",
+        url: "/2LKShop/admin/search",
+        data: {
+          'topSearch': `5`
+        },
+        success:(function (res) {
+          $('#topSellingTable').html(res)
+        }),
+      });
+  })
+</script>
+
 <script>
   $(document).ready(function() {
     var options = {
@@ -171,7 +166,7 @@
             name: "Desktops",
             data: [
               <?php foreach ($revenues as $revenue): ?>
-              <?php echo $revenue ?>,
+                                    <?php echo $revenue ?>,
               <?php endforeach ?>
             ],
         }],
@@ -201,5 +196,37 @@
     var chart = new ApexCharts(document.querySelector("#average-revenue"), options);
 
     chart.render();
+  })
+</script>
+<script>
+  $('#topSearchBtn').click((e) => {
+    e.preventDefault();
+    let topSearchValue = document.querySelector('#topSearch').value;
+    if(topSearchValue == ""){
+      Swal.fire({
+              title: 'Warning!',
+              text: 'Not value!',
+              icon: 'Warning',
+              confirmButtonTeNxt: 'close!'
+            })
+    }
+    else{
+      $.ajax({
+        type: "GET",
+        url: "/2LKShop/admin/search",
+        data: {
+          'topSearch': `${topSearchValue}`
+        },
+        success:(function (res) {
+          $('#topSellingTable').html(res)
+        }),
+      });
+    }
+  })
+</script>
+<script>
+  $("#reloadDashboard").click((e) => {
+    e.preventDefault()
+    location.reload()
   })
 </script>

@@ -56,7 +56,7 @@
               </tr>
             </thead>
             <tbody id="user-order__list">
-              <?php require("order_list.view.php")?>
+              <?php require ("order_list.view.php") ?>
             </tbody>
           </table>
         </div>
@@ -141,7 +141,7 @@
       select: {
         style: "multi"
       },
-      order: [[1, "asc"]],
+      order: [[1, "dec"]],
       drawCallback: function () {
         $(".dataTables_paginate > .pagination").addClass("pagination-rounded"),
           $("#products-datatable_length label").addClass("form-label")

@@ -22,15 +22,26 @@ class AdminController
   public function indexHomeAction(RouteCollection $routes, Request $request)
   {
     startSession();
-    $name = 'home';
-    $productSeller = new Dashboards();
-    $productSeller->getProductBestSeller();
-
+    $name = "home";
     $totalStatus = new Dashboards();
     $totalStatus->getTotalOrderStatus();
     $RevenueOfMonth = new DashBoards();
     $RevenueOfMonth->getRevenue();
     require_once APP_ROOT . '/views/admin/layout.view.php';
+  }
+
+  public function searchTopSell(RouteCollection $routes, Request $request)
+  {
+    startSession();
+    $name = "home";
+    $productSeller = new Dashboards();
+    $_topSearch = $request->query->get('topSearch');
+    print_r($_topSearch);
+    if ($_topSearch == 0) {
+      $_topSearch = 5;
+    }
+    $productSeller->getProductBestSeller($_topSearch);
+    require_once APP_ROOT . '/views/admin/dashboard/top_seller.view.php';
   }
 
   public function indexProductAction(RouteCollection $routes, Request $request)
@@ -66,7 +77,7 @@ class AdminController
     $statusCode = json_decode($_GET['statusCode'] ?? "0");
     $orders = new Orders();
     $orders->getAllOrders($statusCode);
-    if (isset ($_GET['statusCode'])) {
+    if (isset($_GET['statusCode'])) {
       $name = 'orders/order_list';
       require_once APP_ROOT . "/views/admin/$name.view.php";
     } else {

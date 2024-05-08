@@ -34,6 +34,7 @@ $routes->add('logout', new Route(constant('URL_SUBFOLDER') . '/logout', array('c
 $routes->add('register', new Route(constant('URL_SUBFOLDER') . '/register', array('controller' => 'RegisterController', 'method' => 'indexAction')));
 
 $routes->add('admin', new Route(constant('URL_SUBFOLDER') . '/admin', array('controller' => 'AdminController', 'method' => 'indexHomeAction'), array()));
+$routes->add('adminSearch', new Route(constant('URL_SUBFOLDER') . '/admin/search', array('controller' => 'AdminController', 'method' => 'searchTopSell'), array()));
 
 $routes->add('adminProduct', new Route(constant('URL_SUBFOLDER') . constant('ADMINPRODUCT'), array('controller' => 'AdminController', 'method' => 'indexProductAction'), array()));
 $routes->add('createProduct', new Route(constant('URL_SUBFOLDER') . constant('ADMINPRODUCT') . '/create', array('controller' => 'ProductController', 'method' => 'createProduct'), array()));
@@ -61,7 +62,7 @@ $routes->add('deleteBrand', new Route(constant('URL_SUBFOLDER') . constant('ADMI
 
 $routes->add('adminCategory', new Route(constant('URL_SUBFOLDER') . constant('ADMINCATEGORY'), array('controller' => 'AdminController', 'method' => 'indexCategoryAction'), array()));
 $routes->add('createCategory', new Route(constant('URL_SUBFOLDER') . constant('ADMINCATEGORY') . '/create', array('controller' => 'CategoryController', 'method' => 'createCategory'), array()));
-$routes->add('editCategory', new Route(constant('URL_SUBFOLDER') . constant('ADMINCATEGORY') . '/edit/{id}', array('controller' => 'CategoryController', 'method' => 'editAction'), array('id' => '([^&]*)')));
+$routes->add('editCategory', new Route(constant('URL_SUBFOLDER') . constant('ADMINCATEGORY') . '/edit/{id}', array('controller' => 'CategoryController', 'method' => 'editAction'), array('id' => '([^&]*)'))); // Kiểu như này
 $routes->add('updateCategory', new Route(constant('URL_SUBFOLDER') . constant('ADMINCATEGORY') . '/saveChange', array('controller' => 'CategoryController', 'method' => 'updateAction'), array()));
 $routes->add('deleteCategory', new Route(constant('URL_SUBFOLDER') . constant('ADMINCATEGORY') . '/delete/{id}', array('controller' => 'CategoryController', 'method' => 'deleteAction'), array('id' => '([^&]*)')));
 

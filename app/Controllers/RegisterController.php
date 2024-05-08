@@ -27,7 +27,6 @@ class RegisterController
         $_SESSION['showNav'] = false;
         $name = 'register';
         if ($request->isMethod('POST')) {
-            // echo "fjlakjflajsf";
             $user = new User();
             $this->createAccount($user);
         } else {
