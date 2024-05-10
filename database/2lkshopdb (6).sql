@@ -40,10 +40,10 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`Username`, `Password`, `Created_at`, `Modified_at`, `Deleted_at`) VALUES
-('testadmin1', 'testadmin1', '2023-04-02 06:34:58', '2023-04-02 06:39:10', NULL),
-('testadmin2', 'testadmin2', '2023-04-02 06:34:58', NULL, NULL),
-('testuser1', 'testuser1', '2023-04-02 06:34:41', NULL, NULL),
-('testuser2', 'testuser2', '2023-04-02 06:34:41', NULL, NULL);
+('testadmin1', 'testadmin1', '2024-04-02 06:34:58', '2024-04-02 06:39:10', NULL),
+('testadmin2', 'testadmin2', '2024-04-02 06:34:58', NULL, NULL),
+('testuser1', 'testuser1', '2024-04-02 06:34:41', NULL, NULL),
+('testuser2', 'testuser2', '2024-04-02 06:34:41', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -107,9 +107,9 @@ CREATE TABLE `accounttype` (
 --
 
 INSERT INTO `accounttype` (`accountTypeID`, `TypeName`, `created_at`, `modified_at`, `Deleted_at`) VALUES
-('ADMIN', 'For administration the web page', '2023-04-02 06:44:39', NULL, NULL),
-('CUSTOMER', 'default for new account created by customer', '2023-04-02 06:44:39', NULL, NULL),
-('EMPLOYEE', 'For employee with basic functionality', '2023-04-02 06:45:04', NULL, NULL);
+('ADMIN', 'For administration the web page', '2024-04-02 06:44:39', NULL, NULL),
+('CUSTOMER', 'default for new account created by customer', '2024-04-02 06:44:39', NULL, NULL),
+('EMPLOYEE', 'For employee with basic functionality', '2024-04-02 06:45:04', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -203,14 +203,14 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`Product_Line`, `Product_Name`, `Thumbnail`, `Price`, `Discount`, `Created_at`, `Modified_at`, `Deleted_at`, `Created_by`, `BrandID`, `Category`) VALUES
-('MSI_GF65_2', 'Laptop MSI Gaming GF65 Thin 10UE i5 10500H/16GB/512GB/6GB RTX3060 Max-Q/144Hz/Balo/Win10 (286VN)', 'MSI_GF56_268VN.jpg', 29490000, 0, '2023-04-02 13:08:29', '2023-04-20 09:40:02', NULL, 'testadmin1', 'MSI', 1),
-('MSI_GK20', 'Bàn Phím Có dây Gaming MSI Vigor GK20 US', 'MSI_GK20.jpeg', 700000, 0, '2023-04-02 13:10:32', '2023-04-17 08:09:37', NULL, 'testadmin2', 'MSI', 3),
-('MSI_GM08', 'Chuột Có dây Gaming MSI Clutch GM08 Đen', 'MSI_GM08.jpeg', 420000, 50, '2023-04-02 13:10:32', '2023-04-17 08:09:43', NULL, 'testadmin2', 'MSI', 4),
-('MSI_M14_10', 'Laptop MSI Modern 14 B11MOU i3 1115G4/8GB/256GB/Win11 (1027VN)', 'MSI_M14_10.jpg', 13790000, 20, '2023-04-02 13:08:29', '2023-04-17 08:09:50', NULL, 'testadmin1', 'MSI', 1),
-('NH_QAYSV_007', 'Laptop Acer Aspire 7 Gaming A715 42G R05G R5 5500U/8GB/512GB/4GB GTX1650/144Hz/Win11', 'NH_QAYSV_007.jpg', 15990000, 0, '2023-04-19 08:17:26', '2023-04-20 09:30:46', NULL, 'testadmin1', 'ACER', 1),
-('NX_AM0SV_007', 'Laptop Acer Aspire 3 A315 58 54XF i5 1135G7/8GB/512GB/Win11', 'NX_AM0SV_007.png', 13990000, 0, '2023-04-19 08:03:05', '2023-04-20 09:30:54', NULL, 'testadmin1', 'ACER', 1),
-('NX_HS5SV_00K', 'Laptop Acer Aspire 3 A315 56 32TP i3 1005G1/4GB/256GB/Win11', 'NX_HS5SV_00K.jpg', 11990000, 0, '2023-04-19 08:29:46', '2023-04-20 09:31:01', NULL, 'testadmin1', 'ACER', 1),
-('NX_KAGSV_001', 'Laptop Acer Aspire 3 A315 57 379K i3 1005G1/4GB/256GB/Win11', 'NX_KAGSV_001.jpg', 11990000, 0, '2023-04-19 08:14:54', '2023-04-20 09:31:06', NULL, 'testadmin1', 'ACER', 1);
+('MSI_GF65_2', 'Laptop MSI Gaming GF65 Thin 10UE i5 10500H/16GB/512GB/6GB RTX3060 Max-Q/144Hz/Balo/Win10 (286VN)', 'MSI_GF56_268VN.jpg', 29490000, 0, '2024-04-02 13:08:29', '2024-04-20 09:40:02', NULL, 'testadmin1', 'MSI', 1),
+('MSI_GK20', 'Bàn Phím Có dây Gaming MSI Vigor GK20 US', 'MSI_GK20.jpeg', 700000, 0, '2024-04-02 13:10:32', '2024-04-17 08:09:37', NULL, 'testadmin2', 'MSI', 3),
+('MSI_GM08', 'Chuột Có dây Gaming MSI Clutch GM08 Đen', 'MSI_GM08.jpeg', 420000, 50, '2024-04-02 13:10:32', '2024-04-17 08:09:43', NULL, 'testadmin2', 'MSI', 4),
+('MSI_M14_10', 'Laptop MSI Modern 14 B11MOU i3 1115G4/8GB/256GB/Win11 (1027VN)', 'MSI_M14_10.jpg', 13790000, 20, '2024-04-02 13:08:29', '2024-04-17 08:09:50', NULL, 'testadmin1', 'MSI', 1),
+('NH_QAYSV_007', 'Laptop Acer Aspire 7 Gaming A715 42G R05G R5 5500U/8GB/512GB/4GB GTX1650/144Hz/Win11', 'NH_QAYSV_007.jpg', 15990000, 0, '2024-04-19 08:17:26', '2024-04-20 09:30:46', NULL, 'testadmin1', 'ACER', 1),
+('NX_AM0SV_007', 'Laptop Acer Aspire 3 A315 58 54XF i5 1135G7/8GB/512GB/Win11', 'NX_AM0SV_007.png', 13990000, 0, '2024-04-19 08:03:05', '2024-04-20 09:30:54', NULL, 'testadmin1', 'ACER', 1),
+('NX_HS5SV_00K', 'Laptop Acer Aspire 3 A315 56 32TP i3 1005G1/4GB/256GB/Win11', 'NX_HS5SV_00K.jpg', 11990000, 0, '2024-04-19 08:29:46', '2024-04-20 09:31:01', NULL, 'testadmin1', 'ACER', 1),
+('NX_KAGSV_001', 'Laptop Acer Aspire 3 A315 57 379K i3 1005G1/4GB/256GB/Win11', 'NX_KAGSV_001.jpg', 11990000, 0, '2024-04-19 08:14:54', '2024-04-20 09:31:06', NULL, 'testadmin1', 'ACER', 1);
 
 -- --------------------------------------------------------
 

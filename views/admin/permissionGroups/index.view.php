@@ -5,7 +5,7 @@
         <div class="page-title-right">
           <ol class="breadcrumb m-0">
             <li class="breadcrumb-item">
-              <a href="javascript: void(0);">TechShop</a>
+              <a href="javascript: void(0);">2LKSHOP</a>
             </li>
 
             <li class="breadcrumb-item active">Permission Groups</li>
@@ -23,12 +23,12 @@
         <div class="row mb-2">
           <div class="col-sm-4">
             <?php
-              if (isLoggedIn() && in_array('PerGr_Create', $user->getPermissions())):
-            ?>
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-new-permission-group">
-                <i class="mdi mdi-file-plus"></i>
-                Add new permission group
-              </button>
+            if (isLoggedIn() && in_array('PerGr_Create', $user->getPermissions())):
+              ?>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-new-permission-group">
+                  <i class="mdi mdi-file-plus"></i>
+                  Add new permission group
+                </button>
             <?php endif ?>
           </div>
 
@@ -47,49 +47,49 @@
             </thead>
             <tbody>
               <?php foreach ($permissionGroups->groups as $permissionGroup): ?>
-                <tr>
-                  <td>
-                    <?php echo $permissionGroup->getName() ?>
-                  </td>
-                  <td>
-                    <?php echo $permissionGroup->getDescription() ?>
-                  </td>
-                  <td>
-                    <input type="checkbox" id="<?php echo $permissionGroup->getID() ?>" 
-                      <?php echo ($permissionGroup->getDisabled() == 0 ? 'checked' : '') ?> 
-                      data-permission-group="<?php echo $permissionGroup->getID() ?>"
-                      data-switch="success" 
-                    />
-                    <label for="<?php echo $permissionGroup->getID() ?>" data-on-label="Yes" data-off-label="No"></label>
-                  </td>
+                  <tr>
+                    <td>
+                      <?php echo $permissionGroup->getName() ?>
+                    </td>
+                    <td>
+                      <?php echo $permissionGroup->getDescription() ?>
+                    </td>
+                    <td>
+                      <input type="checkbox" id="<?php echo $permissionGroup->getID() ?>" 
+                        <?php echo ($permissionGroup->getDisabled() == 0 ? 'checked' : '') ?> 
+                        data-permission-group="<?php echo $permissionGroup->getID() ?>"
+                        data-switch="success" 
+                      />
+                      <label for="<?php echo $permissionGroup->getID() ?>" data-on-label="On" data-off-label="Off"></label>
+                    </td>
 
-                  <td class="table-action">
-                    <button type="button" class="action-icon btn" data-bs-toggle="modal"
-                      data-bs-target="#detail-permission" id="detail-permission-selected"
-                      data-permission-group-id="<?php echo $permissionGroup->getID() ?>"
-                      data-permission-group-name="<?php echo $permissionGroup->getName() ?>">
-                      <i class="mdi mdi-eye"></i>
-                    </button>
-                    <?php
+                    <td class="table-action">
+                      <button type="button" class="action-icon btn" data-bs-toggle="modal"
+                        data-bs-target="#detail-permission" id="detail-permission-selected"
+                        data-permission-group-id="<?php echo $permissionGroup->getID() ?>"
+                        data-permission-group-name="<?php echo $permissionGroup->getName() ?>">
+                        <i class="mdi mdi-eye"></i>
+                      </button>
+                      <?php
                       if (isLoggedIn() && in_array('PerGr_Edit', $user->getPermissions())):
-                    ?>
-                      <button type="button" class="action-icon btn edit-btn" data-bs-toggle="modal"
-                        data-bs-target="#edit-permission" data-permission-group-id="<?php echo $permissionGroup->getID() ?>"
-                        data-permission-group-name="<?php echo $permissionGroup->getName() ?>"
-                        >
-                        <i class="mdi mdi-square-edit-outline"></i>
-                      </button>
-                    <?php endif ?>
-                    <?php
+                        ?>
+                          <button type="button" class="action-icon btn edit-btn" data-bs-toggle="modal"
+                            data-bs-target="#edit-permission" data-permission-group-id="<?php echo $permissionGroup->getID() ?>"
+                            data-permission-group-name="<?php echo $permissionGroup->getName() ?>"
+                            >
+                            <i class="mdi mdi-square-edit-outline"></i>
+                          </button>
+                      <?php endif ?>
+                      <?php
                       if (isLoggedIn() && in_array('PerGr_AddPer', $user->getPermissions())):
-                    ?>
-                      <button type="button" class="action-icon btn add-btn" data-bs-toggle="modal"
-                        data-bs-target="#add-permission" data-role-id="<?php echo $permissionGroup->getID() ?>">
-                        <i class="mdi mdi-database-plus"></i>
-                      </button>
-                    <?php endif ?>
-                  </td>
-                </tr>
+                        ?>
+                          <button type="button" class="action-icon btn add-btn" data-bs-toggle="modal"
+                            data-bs-target="#add-permission" data-role-id="<?php echo $permissionGroup->getID() ?>">
+                            <i class="mdi mdi-database-plus"></i>
+                          </button>
+                      <?php endif ?>
+                    </td>
+                  </tr>
               <?php endforeach ?>
             </tbody>
           </table>

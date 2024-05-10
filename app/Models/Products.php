@@ -35,7 +35,8 @@ class Products
     return $this->productList;
   }
 
-  public function readByCategory(string $category){
+  public function readByCategory(string $category)
+  {
     $db = connect();
 
     $query = ('
@@ -67,7 +68,7 @@ class Products
       ]);
 
       $stock = $countStm->fetchColumn() ?? 0;
-      if ($stock == 0) 
+      if ($stock == 0)
         continue;
       $product = new Product();
       $product->setStock($stock);
@@ -143,8 +144,8 @@ class Products
   public function search(string $searchStr)
   {
     $db = connect();
-    $search = "%".join("%", explode(" ",$searchStr))."%";
-    
+    $search = "%" . join("%", explode(" ", $searchStr)) . "%";
+
     $query = ("SELECT `product`.*
     FROM `product` 
       LEFT JOIN `productinfo` ON `productinfo`.`Product_Line` = `product`.`Product_Line` 
@@ -182,7 +183,8 @@ class Products
     return $this->productList;
   }
 
-  public function getProductItem(string $productLine) {
+  public function getProductItem(string $productLine)
+  {
     $db = connect();
 
     $getItemSql = "SELECT `product_warranty`.`product_id`

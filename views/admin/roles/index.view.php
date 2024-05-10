@@ -5,7 +5,7 @@
         <div class="page-title-right">
           <ol class="breadcrumb m-0">
             <li class="breadcrumb-item">
-              <a href="javascript: void(0);">TechShop</a>
+              <a href="javascript: void(0);">2LKSHOP</a>
             </li>
 
             <li class="breadcrumb-item active">Roles</li>
@@ -24,12 +24,12 @@
         <div class="row mb-2">
           <div class="col-sm-4">
             <?php
-              if (isLoggedIn() && in_array('R_Create', $user->getPermissions())):
-            ?>
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-new-role">
-                <i class="mdi mdi-file-plus"></i>
-                Add new role
-              </button>
+            if (isLoggedIn() && in_array('R_Create', $user->getPermissions())):
+              ?>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-new-role">
+                  <i class="mdi mdi-file-plus"></i>
+                  Add new role
+                </button>
             <?php endif ?>
           </div>
 
@@ -49,47 +49,50 @@
               </tr>
             </thead>
             <tbody>
-              <?php foreach($roles->roles as $role):?>
-                <tr>
-                  <td><?php echo $role->getRoleId()?></td>
-                  <td><?php echo $role->getRoleName()?></td>
-                  <td><?php echo $role->getRoleDescription()?></td>
-                  <td><?php echo $role->getCreatedAt()?></td>
-                  <td>
-                  <?php
-                    if (isLoggedIn() && in_array('R_UpdateStatus', $user->getPermissions())):
-                    ?>
-                      <input type="checkbox" id="<?php echo $role->getRoleId() ?>"  
-                      <?php if(!$role->getDisabled()) echo "checked"?>
-                      data-role-id="<?php echo $role->getRoleId() ?>"
-                      data-switch="success" />
-                      <label for="<?php echo $role->getRoleId() ?>" data-on-label="Yes" data-off-label="No"></label>
-                    <?php else: ?>
-                      <?php if(!$role->getDisabled()) echo '<span class="badge badge-success-lighten">Active</span>';
-                            else echo '<span class="badge badge-danger-lighten">Deactive</span>';
-                      ?>
-                    <?php endif ?>
-                  </td>
-  
-                  <td class="table-action">
+              <?php foreach ($roles->roles as $role): ?>
+                  <tr>
+                    <td><?php echo $role->getRoleId() ?></td>
+                    <td><?php echo $role->getRoleName() ?></td>
+                    <td><?php echo $role->getRoleDescription() ?></td>
+                    <td><?php echo $role->getCreatedAt() ?></td>
+                    <td>
                     <?php
+                    if (isLoggedIn() && in_array('R_UpdateStatus', $user->getPermissions())):
+                      ?>
+                          <input type="checkbox" id="<?php echo $role->getRoleId() ?>"  
+                          <?php if (!$role->getDisabled())
+                            echo "checked" ?>
+                            data-role-id="<?php echo $role->getRoleId() ?>"
+                          data-switch="success" />
+                          <label for="<?php echo $role->getRoleId() ?>" data-on-label="Yes" data-off-label="No"></label>
+                      <?php else: ?>
+                          <?php if (!$role->getDisabled())
+                            echo '<span class="badge badge-success-lighten">Active</span>';
+                          else
+                            echo '<span class="badge badge-danger-lighten">Deactive</span>';
+                          ?>
+                      <?php endif ?>
+                    </td>
+  
+                    <td class="table-action">
+                      <?php
                       if (isLoggedIn() && in_array('R_Edit', $user->getPermissions())):
-                    ?>
-                      <button type="button" class="action-icon btn edit-btn"
-                        data-bs-toggle="modal" data-bs-target="#change-role-info"
-                        data-role-id="<?php echo $role->getRoleId() ?>">
-                        <i class="mdi mdi-square-edit-outline"></i>
-                      </button>
-                    <?php endif ?>
-                    <!-- <?php if($role->getDeteleAble()):?>
+                        ?>
+                          <button type="button" class="action-icon btn edit-btn"
+                            data-bs-toggle="modal" data-bs-target="#change-role-info"
+                            data-role-id="<?php echo $role->getRoleId() ?>">
+                            <i class="mdi mdi-square-edit-outline"></i>
+                          </button>
+                      <?php endif ?>
+                      <!-- <?php if ($role->getDeteleAble()): ?>
                       <button type="button" class="action-icon btn delete-btn"
                         data-role-id="<?php echo $role->getRoleId() ?>">
                         <i class="mdi mdi-delete"></i>
                       </button>
-                    <?php endif?> -->
-                  </td>
-                </tr>
-              <?php endforeach?>
+                    <?php endif ?> -->
+                    </td>
+                  </tr>
+              <?php endforeach ?>
             </tbody>
           </table>
         </div>
@@ -167,7 +170,7 @@
       })
     })
 
-    const roleIdArr = <?php echo json_encode(serialize($roles->roles))?>
+    const roleIdArr = <?php echo json_encode(serialize($roles->roles)) ?>
 
     $('#create-form').submit(function (e) {
       e.preventDefault();

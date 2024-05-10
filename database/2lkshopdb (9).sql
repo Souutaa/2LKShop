@@ -40,12 +40,12 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`Username`, `Password`, `Created_at`, `Modified_at`, `Deleted_at`) VALUES
-('testadmin1', 'testadmin1', '2023-04-02 06:34:58', '2023-04-02 06:39:10', NULL),
-('testadmin2', 'testadmin2', '2023-04-02 06:34:58', NULL, NULL),
-('testuser1', 'testuser1', '2023-04-02 06:34:41', NULL, NULL),
-('testuser2', 'testuser2', '2023-04-02 06:34:41', NULL, NULL),
-('testuser3', 'testuser3', '2023-05-02 13:54:57', NULL, NULL),
-('testuser4', 'testuser4', '2023-05-02 13:55:36', NULL, NULL);
+('testadmin1', 'testadmin1', '2024-04-02 06:34:58', '2024-04-02 06:39:10', NULL),
+('testadmin2', 'testadmin2', '2024-04-02 06:34:58', NULL, NULL),
+('testuser1', 'testuser1', '2024-04-02 06:34:41', NULL, NULL),
+('testuser2', 'testuser2', '2024-04-02 06:34:41', NULL, NULL),
+('testuser3', 'testuser3', '2024-05-02 13:54:57', NULL, NULL),
+('testuser4', 'testuser4', '2024-05-02 13:55:36', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -120,9 +120,9 @@ CREATE TABLE `accounttype` (
 --
 
 INSERT INTO `accounttype` (`accountTypeID`, `TypeName`, `created_at`, `modified_at`, `Deleted_at`) VALUES
-('ADMIN', 'For administration the web page', '2023-04-02 06:44:39', NULL, NULL),
-('CUSTOMER', 'default for new account created by customer', '2023-04-02 06:44:39', NULL, NULL),
-('EMPLOYEE', 'For employee with basic functionality', '2023-04-02 06:45:04', NULL, NULL);
+('ADMIN', 'For administration the web page', '2024-04-02 06:44:39', NULL, NULL),
+('CUSTOMER', 'default for new account created by customer', '2024-04-02 06:44:39', NULL, NULL),
+('EMPLOYEE', 'For employee with basic functionality', '2024-04-02 06:45:04', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -324,19 +324,19 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`Product_Line`, `Product_Name`, `Thumbnail`, `Price`, `Discount`, `warranty_period`, `Created_at`, `Modified_at`, `Deleted_at`, `Created_by`, `BrandID`, `Category`) VALUES
-('AMD_RZ_5_3600_B_CT', 'CPU AMD RYZEN 5 3600 (3.6GHz Up to 4.20GHz, AM4, 6 Cores 12 Threads) Box Công Ty', 'AMD_RZ_5_3600_B_CT.jpg', 4390000, 0, '12M', '2023-05-04 09:13:45', '2023-05-06 15:07:32', NULL, 'testadmin1', 'AMD', 6),
-('IG870_TR', 'CPU intel pentium G870 (3.0GHz, 2 lõi, 2 luồng) Tray', 'IG870_TR.jpg', 210000, 0, NULL, '2023-05-03 14:40:11', '2023-05-06 14:58:15', NULL, 'testadmin1', 'INTEL', 6),
-('MB_CHICKEN_Mini_1660TI', 'Cấu hình Gaming CHICKEN Mini 1660Ti', 'MB_CHICKEN_Mini_1660TI.jpg', 8885000, 0, NULL, '2023-05-03 14:33:10', '2023-05-08 12:54:19', NULL, 'testadmin1', 'NoBrand', 2),
-('MB_STAR_CHICKEN_SUMMMER', 'Cấu hình Gaming CHICKEN Summer 3050', 'MB_STAR_CHICKEN_SUMMMER.png', 13549000, 0, NULL, '2023-05-08 12:52:58', '2023-05-08 12:54:44', NULL, 'testadmin1', 'NoBrand', 2),
-('MSI_GF65_2', 'Laptop MSI Gaming GF65 Thin 10UE i5 10500H/16GB/512GB/6GB RTX3060 Max-Q/144Hz/Balo/Win10 (286VN)', 'MSI_GF56_268VN.jpg', 29490000, 0, NULL, '2023-04-02 13:08:29', '2023-05-06 14:58:12', NULL, 'testadmin1', 'MSI', 1),
-('MSI_GK20', 'Bàn Phím Có dây Gaming MSI Vigor GK20 US', 'MSI_GK20.jpeg', 700000, 0, NULL, '2023-04-02 13:10:32', '2023-05-06 14:58:10', NULL, 'testadmin2', 'MSI', 3),
-('MSI_GM08', 'Chuột Có dây Gaming MSI Clutch GM08 Đen', 'MSI_GM08.jpeg', 420000, 50, NULL, '2023-04-02 13:10:32', '2023-05-06 14:58:08', NULL, 'testadmin2', 'MSI', 4),
-('MSI_M14_10', 'Laptop MSI Modern 14 B11MOU i3 1115G4/8GB/256GB/Win11 (1027VN)', 'MSI_M14_10.jpg', 13790000, 20, NULL, '2023-04-02 13:08:29', '2023-05-08 11:50:52', '2023-05-08 18:50:52', 'testadmin1', 'MSI', 1),
-('NH_QAYSV_007', 'Laptop Acer Aspire 7 Gaming A715 42G R05G R5 5500U/8GB/512GB/4GB GTX1650/144Hz/Win11', 'NH_QAYSV_007.jpg', 15990000, 0, NULL, '2023-04-19 08:17:26', '2023-05-06 14:58:05', NULL, 'testadmin1', 'ACER', 1),
-('NX_AM0SV_007', 'Laptop Acer Aspire 3 A315 58 54XF i5 1135G7/8GB/512GB/Win11', 'NX_AM0SV_007.png', 13990000, 0, NULL, '2023-04-19 08:03:05', '2023-05-06 14:58:04', NULL, 'testadmin1', 'ACER', 1),
-('NX_HS5SV_00K', 'Laptop Acer Aspire 3 A315 56 32TP i3 1005G1/4GB/256GB/Win11', 'NX_HS5SV_00K.jpg', 11990000, 0, NULL, '2023-04-19 08:29:46', '2023-05-06 14:58:02', NULL, 'testadmin1', 'ACER', 1),
-('NX_KAGSV_001', 'Laptop Acer Aspire 3 A315 57 379K i3 1005G1/4GB/256GB/Win11', 'NX_KAGSV_001.jpg', 11990000, 0, NULL, '2023-04-19 08:14:54', '2023-05-06 14:57:57', NULL, 'testadmin1', 'ACER', 1),
-('V_730_2G_PL', 'VGA Palit GT 730 2GB SDDR3 64-bit VGA-DVI-HDMI', 'V_730_2G_PL.jpg', 990000, 0, NULL, '2023-05-03 14:38:48', '2023-05-06 14:58:00', NULL, 'testadmin1', 'NVIDIA', 7);
+('AMD_RZ_5_3600_B_CT', 'CPU AMD RYZEN 5 3600 (3.6GHz Up to 4.20GHz, AM4, 6 Cores 12 Threads) Box Công Ty', 'AMD_RZ_5_3600_B_CT.jpg', 4390000, 0, '12M', '2024-05-04 09:13:45', '2024-05-06 15:07:32', NULL, 'testadmin1', 'AMD', 6),
+('IG870_TR', 'CPU intel pentium G870 (3.0GHz, 2 lõi, 2 luồng) Tray', 'IG870_TR.jpg', 210000, 0, NULL, '2024-05-03 14:40:11', '2024-05-06 14:58:15', NULL, 'testadmin1', 'INTEL', 6),
+('MB_CHICKEN_Mini_1660TI', 'Cấu hình Gaming CHICKEN Mini 1660Ti', 'MB_CHICKEN_Mini_1660TI.jpg', 8885000, 0, NULL, '2024-05-03 14:33:10', '2024-05-08 12:54:19', NULL, 'testadmin1', 'NoBrand', 2),
+('MB_STAR_CHICKEN_SUMMMER', 'Cấu hình Gaming CHICKEN Summer 3050', 'MB_STAR_CHICKEN_SUMMMER.png', 13549000, 0, NULL, '2024-05-08 12:52:58', '2024-05-08 12:54:44', NULL, 'testadmin1', 'NoBrand', 2),
+('MSI_GF65_2', 'Laptop MSI Gaming GF65 Thin 10UE i5 10500H/16GB/512GB/6GB RTX3060 Max-Q/144Hz/Balo/Win10 (286VN)', 'MSI_GF56_268VN.jpg', 29490000, 0, NULL, '2024-04-02 13:08:29', '2024-05-06 14:58:12', NULL, 'testadmin1', 'MSI', 1),
+('MSI_GK20', 'Bàn Phím Có dây Gaming MSI Vigor GK20 US', 'MSI_GK20.jpeg', 700000, 0, NULL, '2024-04-02 13:10:32', '2024-05-06 14:58:10', NULL, 'testadmin2', 'MSI', 3),
+('MSI_GM08', 'Chuột Có dây Gaming MSI Clutch GM08 Đen', 'MSI_GM08.jpeg', 420000, 50, NULL, '2024-04-02 13:10:32', '2024-05-06 14:58:08', NULL, 'testadmin2', 'MSI', 4),
+('MSI_M14_10', 'Laptop MSI Modern 14 B11MOU i3 1115G4/8GB/256GB/Win11 (1027VN)', 'MSI_M14_10.jpg', 13790000, 20, NULL, '2024-04-02 13:08:29', '2024-05-08 11:50:52', '2024-05-08 18:50:52', 'testadmin1', 'MSI', 1),
+('NH_QAYSV_007', 'Laptop Acer Aspire 7 Gaming A715 42G R05G R5 5500U/8GB/512GB/4GB GTX1650/144Hz/Win11', 'NH_QAYSV_007.jpg', 15990000, 0, NULL, '2024-04-19 08:17:26', '2024-05-06 14:58:05', NULL, 'testadmin1', 'ACER', 1),
+('NX_AM0SV_007', 'Laptop Acer Aspire 3 A315 58 54XF i5 1135G7/8GB/512GB/Win11', 'NX_AM0SV_007.png', 13990000, 0, NULL, '2024-04-19 08:03:05', '2024-05-06 14:58:04', NULL, 'testadmin1', 'ACER', 1),
+('NX_HS5SV_00K', 'Laptop Acer Aspire 3 A315 56 32TP i3 1005G1/4GB/256GB/Win11', 'NX_HS5SV_00K.jpg', 11990000, 0, NULL, '2024-04-19 08:29:46', '2024-05-06 14:58:02', NULL, 'testadmin1', 'ACER', 1),
+('NX_KAGSV_001', 'Laptop Acer Aspire 3 A315 57 379K i3 1005G1/4GB/256GB/Win11', 'NX_KAGSV_001.jpg', 11990000, 0, NULL, '2024-04-19 08:14:54', '2024-05-06 14:57:57', NULL, 'testadmin1', 'ACER', 1),
+('V_730_2G_PL', 'VGA Palit GT 730 2GB SDDR3 64-bit VGA-DVI-HDMI', 'V_730_2G_PL.jpg', 990000, 0, NULL, '2024-05-03 14:38:48', '2024-05-06 14:58:00', NULL, 'testadmin1', 'NVIDIA', 7);
 
 -- --------------------------------------------------------
 
@@ -430,14 +430,14 @@ CREATE TABLE `product_warranty` (
 --
 
 INSERT INTO `product_warranty` (`product_id`, `purchased_at`, `warranty_period`, `product_line`) VALUES
-('AMDRZ1', '2023-05-06', NULL, 'AMD_RZ_5_3600_B_CT'),
+('AMDRZ1', '2024-05-06', NULL, 'AMD_RZ_5_3600_B_CT'),
 ('AMDRZ2', NULL, NULL, 'AMD_RZ_5_3600_B_CT'),
 ('CCS1', NULL, NULL, 'MB_STAR_CHICKEN_SUMMMER'),
 ('CCS2', NULL, NULL, 'MB_STAR_CHICKEN_SUMMMER'),
 ('CCS3', NULL, NULL, 'MB_STAR_CHICKEN_SUMMMER'),
 ('CCS4', NULL, NULL, 'MB_STAR_CHICKEN_SUMMMER'),
-('K123172489FAN', '2023-05-06', NULL, 'MSI_GF65_2'),
-('PD1', '2023-05-06', NULL, 'MSI_GF65_2'),
+('K123172489FAN', '2024-05-06', NULL, 'MSI_GF65_2'),
+('PD1', '2024-05-06', NULL, 'MSI_GF65_2'),
 ('PD2', NULL, NULL, 'MSI_GF65_2');
 
 -- --------------------------------------------------------
@@ -489,24 +489,24 @@ CREATE TABLE `userorder` (
 --
 
 INSERT INTO `userorder` (`OrderID`, `Username`, `Created_at`, `Status`, `Total`, `Confirmed_by`) VALUES
-(18, 'testuser1', '2023-05-06 11:10:13', 5, 58980000, NULL),
-(19, 'testuser1', '2023-05-06 12:24:43', 5, 29490000, NULL),
-(20, 'testuser1', '2023-05-06 12:25:41', 5, 29490000, NULL),
-(21, 'testuser1', '2023-05-06 12:26:25', 3, 29490000, NULL),
-(22, 'testuser1', '2023-05-06 13:55:17', 4, 33880000, NULL),
-(23, 'testuser1', '2023-05-06 13:56:50', 5, 4390000, NULL),
-(24, 'testuser1', '2023-05-06 15:26:44', 5, 4390000, NULL),
-(25, 'testuser1', '2023-05-06 15:28:02', 5, 4390000, NULL),
-(26, 'testuser1', '2023-05-06 15:30:24', 5, 4390000, NULL),
-(27, 'testuser1', '2023-05-06 15:32:23', 5, 4390000, NULL),
-(28, 'testuser1', '2023-05-06 15:34:11', 5, 4390000, NULL),
-(29, 'testuser1', '2023-05-06 15:36:05', 5, 4390000, NULL),
-(30, 'testuser1', '2023-05-06 15:37:10', 5, 4390000, NULL),
-(31, 'testuser1', '2023-05-06 15:38:03', 5, 4390000, NULL),
-(32, 'testuser1', '2023-05-06 15:38:28', 5, 4390000, NULL),
-(33, 'testuser1', '2023-05-06 15:39:25', 5, 4390000, NULL),
-(34, 'testuser1', '2023-05-06 15:42:55', 5, 4390000, NULL),
-(35, 'testuser1', '2023-05-06 15:45:18', 5, 29490000, NULL);
+(18, 'testuser1', '2024-05-06 11:10:13', 5, 58980000, NULL),
+(19, 'testuser1', '2024-05-06 12:24:43', 5, 29490000, NULL),
+(20, 'testuser1', '2024-05-06 12:25:41', 5, 29490000, NULL),
+(21, 'testuser1', '2024-05-06 12:26:25', 3, 29490000, NULL),
+(22, 'testuser1', '2024-05-06 13:55:17', 4, 33880000, NULL),
+(23, 'testuser1', '2024-05-06 13:56:50', 5, 4390000, NULL),
+(24, 'testuser1', '2024-05-06 15:26:44', 5, 4390000, NULL),
+(25, 'testuser1', '2024-05-06 15:28:02', 5, 4390000, NULL),
+(26, 'testuser1', '2024-05-06 15:30:24', 5, 4390000, NULL),
+(27, 'testuser1', '2024-05-06 15:32:23', 5, 4390000, NULL),
+(28, 'testuser1', '2024-05-06 15:34:11', 5, 4390000, NULL),
+(29, 'testuser1', '2024-05-06 15:36:05', 5, 4390000, NULL),
+(30, 'testuser1', '2024-05-06 15:37:10', 5, 4390000, NULL),
+(31, 'testuser1', '2024-05-06 15:38:03', 5, 4390000, NULL),
+(32, 'testuser1', '2024-05-06 15:38:28', 5, 4390000, NULL),
+(33, 'testuser1', '2024-05-06 15:39:25', 5, 4390000, NULL),
+(34, 'testuser1', '2024-05-06 15:42:55', 5, 4390000, NULL),
+(35, 'testuser1', '2024-05-06 15:45:18', 5, 29490000, NULL);
 
 -- --------------------------------------------------------
 

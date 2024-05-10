@@ -583,7 +583,7 @@ class Product
       $tmp_name = $_FILES["newthumbnail"]["tmp_name"];
       $name = basename($_FILES["newthumbnail"]["name"]);
       $ext = pathinfo($name, PATHINFO_EXTENSION);
-      move_uploaded_file($tmp_name, APP_ROOT . "/public/images/thumbnail/$this->productLine.$ext");
+      move_uploaded_file($tmp_name, APP_ROOT . "/public/images/thumbNail/$this->productLine.$ext");
     }
 
     $countCurrentImgSql = "SELECT COUNT(`productimage`.`imgPath`)

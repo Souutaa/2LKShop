@@ -235,7 +235,7 @@ if (isLoggedIn()) {
               <script>
                 document.write(new Date().getFullYear());
               </script>
-              © Techshop
+              © 2LKSHOP
             </div>
             <div class="col-md-6">
               <div class="text-md-end footer-links d-none d-md-block">

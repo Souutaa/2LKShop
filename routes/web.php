@@ -54,8 +54,8 @@ $routes->add('getEditUserForm', new Route(constant('URL_SUBFOLDER') . '/admin/ge
 $routes->add('updateUserInfo', new Route(constant('URL_SUBFOLDER') . '/admin/updateUserInfo', array('controller' => 'UserController', 'method' => 'updateUserInfoAction'), array()));
 $routes->add('deactiveUser', new Route(constant('URL_SUBFOLDER') . '/admin/deactiveUser', array('controller' => 'UserController', 'method' => 'deactiveUserAction'), array()));
 
-$routes->add('adminBrands', new Route(constant('URL_SUBFOLDER') . constant('ADMINBRAND'), array('controller' => 'AdminController', 'method' => 'indexBrandAction'), array()));
-$routes->add('createBrands', new Route(constant('URL_SUBFOLDER') . constant('ADMINBRAND') . '/create', array('controller' => 'BrandController', 'method' => 'createBrand'), array()));
+$routes->add('adminBrands', new Route(constant('URL_SUBFOLDER') . constant('ADMINBRANDS'), array('controller' => 'AdminController', 'method' => 'indexBrandAction'), array()));
+$routes->add('createBrands', new Route(constant('URL_SUBFOLDER') . constant('ADMINBRANDS') . '/create', array('controller' => 'BrandController', 'method' => 'createBrand'), array()));
 $routes->add('editBrands', new Route(constant('URL_SUBFOLDER') . constant('ADMINBRAND') . '/edit/{id}', array('controller' => 'BrandController', 'method' => 'editAction'), array('id' => '([^&]*)')));
 $routes->add('updateBrand', new Route(constant('URL_SUBFOLDER') . constant('ADMINBRAND') . '/saveChange', array('controller' => 'BrandController', 'method' => 'updateAction'), array()));
 $routes->add('deleteBrand', new Route(constant('URL_SUBFOLDER') . constant('ADMINBRAND') . '/delete/{id}', array('controller' => 'BrandController', 'method' => 'deleteAction'), array('id' => '([^&]*)')));

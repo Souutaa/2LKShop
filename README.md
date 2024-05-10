@@ -1,6 +1,4 @@
-# Welcome to TechShop Project!
-
-This project created for **study** purpose!
+# Welcome to 2LKShop Project!
 
 # Members:
 

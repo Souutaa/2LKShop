@@ -40,12 +40,12 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`Username`, `Password`, `Created_at`, `Modified_at`, `Deleted_at`) VALUES
-('testadmin1', 'testadmin1', '2023-04-02 06:34:58', '2023-04-02 06:39:10', NULL),
-('testadmin2', 'testadmin2', '2023-04-02 06:34:58', NULL, NULL),
-('testuser1', 'testuser1', '2023-04-02 06:34:41', NULL, NULL),
-('testuser2', 'testuser2', '2023-04-02 06:34:41', NULL, NULL),
-('testuser3', 'testuser3', '2023-05-02 13:54:57', NULL, NULL),
-('testuser4', 'testuser4', '2023-05-02 13:55:36', NULL, NULL);
+('testadmin1', 'testadmin1', '2024-04-02 06:34:58', '2024-04-02 06:39:10', NULL),
+('testadmin2', 'testadmin2', '2024-04-02 06:34:58', NULL, NULL),
+('testuser1', 'testuser1', '2024-04-02 06:34:41', NULL, NULL),
+('testuser2', 'testuser2', '2024-04-02 06:34:41', NULL, NULL),
+('testuser3', 'testuser3', '2024-05-02 13:54:57', NULL, NULL),
+('testuser4', 'testuser4', '2024-05-02 13:55:36', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -120,9 +120,9 @@ CREATE TABLE `accounttype` (
 --
 
 INSERT INTO `accounttype` (`accountTypeID`, `TypeName`, `created_at`, `modified_at`, `Deleted_at`) VALUES
-('ADMIN', 'For administration the web page', '2023-04-02 06:44:39', NULL, NULL),
-('CUSTOMER', 'default for new account created by customer', '2023-04-02 06:44:39', NULL, NULL),
-('EMPLOYEE', 'For employee with basic functionality', '2023-04-02 06:45:04', NULL, NULL);
+('ADMIN', 'For administration the web page', '2024-04-02 06:44:39', NULL, NULL),
+('CUSTOMER', 'default for new account created by customer', '2024-04-02 06:44:39', NULL, NULL),
+('EMPLOYEE', 'For employee with basic functionality', '2024-04-02 06:45:04', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -263,18 +263,18 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`Product_Line`, `Product_Name`, `Thumbnail`, `Price`, `Discount`, `Created_at`, `Modified_at`, `Deleted_at`, `Created_by`, `BrandID`, `Category`) VALUES
-('AMD_RZ_5_3600_B_CT', 'CPU AMD RYZEN 5 3600 (3.6GHz Up to 4.20GHz, AM4, 6 Cores 12 Threads) Box Công Ty', 'AMD_RZ_5_3600_B_CT.jpg', 4390000, 0, '2023-05-04 09:13:45', NULL, NULL, 'testadmin1', 'AMD', 6),
-('IG870_TR', 'CPU intel pentium G870 (3.0GHz, 2 lõi, 2 luồng) Tray', 'IG870_TR.jpg', 210000, 0, '2023-05-03 14:40:11', NULL, NULL, 'testadmin1', 'INTEL', 6),
-('MB_CHICKEN_Mini_1660TI', 'Cấu hình Gaming CHICKEN Mini 1660Ti', 'MB_CHICKEN_Mini_1660TI.jpg', 8885000, 0, '2023-05-03 14:33:10', NULL, NULL, 'testadmin1', 'ACER', 2),
-('MSI_GF65_2', 'Laptop MSI Gaming GF65 Thin 10UE i5 10500H/16GB/512GB/6GB RTX3060 Max-Q/144Hz/Balo/Win10 (286VN)', 'MSI_GF56_268VN.jpg', 29490000, 0, '2023-04-02 13:08:29', '2023-04-20 09:40:02', NULL, 'testadmin1', 'MSI', 1),
-('MSI_GK20', 'Bàn Phím Có dây Gaming MSI Vigor GK20 US', 'MSI_GK20.jpeg', 700000, 0, '2023-04-02 13:10:32', '2023-04-17 08:09:37', NULL, 'testadmin2', 'MSI', 3),
-('MSI_GM08', 'Chuột Có dây Gaming MSI Clutch GM08 Đen', 'MSI_GM08.jpeg', 420000, 50, '2023-04-02 13:10:32', '2023-04-17 08:09:43', NULL, 'testadmin2', 'MSI', 4),
-('MSI_M14_10', 'Laptop MSI Modern 14 B11MOU i3 1115G4/8GB/256GB/Win11 (1027VN)', 'MSI_M14_10.jpg', 13790000, 20, '2023-04-02 13:08:29', '2023-04-17 08:09:50', NULL, 'testadmin1', 'MSI', 1),
-('NH_QAYSV_007', 'Laptop Acer Aspire 7 Gaming A715 42G R05G R5 5500U/8GB/512GB/4GB GTX1650/144Hz/Win11', 'NH_QAYSV_007.jpg', 15990000, 0, '2023-04-19 08:17:26', '2023-04-20 09:30:46', NULL, 'testadmin1', 'ACER', 1),
-('NX_AM0SV_007', 'Laptop Acer Aspire 3 A315 58 54XF i5 1135G7/8GB/512GB/Win11', 'NX_AM0SV_007.png', 13990000, 0, '2023-04-19 08:03:05', '2023-04-20 09:30:54', NULL, 'testadmin1', 'ACER', 1),
-('NX_HS5SV_00K', 'Laptop Acer Aspire 3 A315 56 32TP i3 1005G1/4GB/256GB/Win11', 'NX_HS5SV_00K.jpg', 11990000, 0, '2023-04-19 08:29:46', '2023-04-20 09:31:01', NULL, 'testadmin1', 'ACER', 1),
-('NX_KAGSV_001', 'Laptop Acer Aspire 3 A315 57 379K i3 1005G1/4GB/256GB/Win11', 'NX_KAGSV_001.jpg', 11990000, 0, '2023-04-19 08:14:54', '2023-04-20 09:31:06', NULL, 'testadmin1', 'ACER', 1),
-('V_730_2G_PL', 'VGA Palit GT 730 2GB SDDR3 64-bit VGA-DVI-HDMI', 'V_730_2G_PL.jpg', 990000, 0, '2023-05-03 14:38:48', NULL, NULL, 'testadmin1', 'NVIDIA', 7);
+('AMD_RZ_5_3600_B_CT', 'CPU AMD RYZEN 5 3600 (3.6GHz Up to 4.20GHz, AM4, 6 Cores 12 Threads) Box Công Ty', 'AMD_RZ_5_3600_B_CT.jpg', 4390000, 0, '2024-05-04 09:13:45', NULL, NULL, 'testadmin1', 'AMD', 6),
+('IG870_TR', 'CPU intel pentium G870 (3.0GHz, 2 lõi, 2 luồng) Tray', 'IG870_TR.jpg', 210000, 0, '2024-05-03 14:40:11', NULL, NULL, 'testadmin1', 'INTEL', 6),
+('MB_CHICKEN_Mini_1660TI', 'Cấu hình Gaming CHICKEN Mini 1660Ti', 'MB_CHICKEN_Mini_1660TI.jpg', 8885000, 0, '2024-05-03 14:33:10', NULL, NULL, 'testadmin1', 'ACER', 2),
+('MSI_GF65_2', 'Laptop MSI Gaming GF65 Thin 10UE i5 10500H/16GB/512GB/6GB RTX3060 Max-Q/144Hz/Balo/Win10 (286VN)', 'MSI_GF56_268VN.jpg', 29490000, 0, '2024-04-02 13:08:29', '2024-04-20 09:40:02', NULL, 'testadmin1', 'MSI', 1),
+('MSI_GK20', 'Bàn Phím Có dây Gaming MSI Vigor GK20 US', 'MSI_GK20.jpeg', 700000, 0, '2024-04-02 13:10:32', '2024-04-17 08:09:37', NULL, 'testadmin2', 'MSI', 3),
+('MSI_GM08', 'Chuột Có dây Gaming MSI Clutch GM08 Đen', 'MSI_GM08.jpeg', 420000, 50, '2024-04-02 13:10:32', '2024-04-17 08:09:43', NULL, 'testadmin2', 'MSI', 4),
+('MSI_M14_10', 'Laptop MSI Modern 14 B11MOU i3 1115G4/8GB/256GB/Win11 (1027VN)', 'MSI_M14_10.jpg', 13790000, 20, '2024-04-02 13:08:29', '2024-04-17 08:09:50', NULL, 'testadmin1', 'MSI', 1),
+('NH_QAYSV_007', 'Laptop Acer Aspire 7 Gaming A715 42G R05G R5 5500U/8GB/512GB/4GB GTX1650/144Hz/Win11', 'NH_QAYSV_007.jpg', 15990000, 0, '2024-04-19 08:17:26', '2024-04-20 09:30:46', NULL, 'testadmin1', 'ACER', 1),
+('NX_AM0SV_007', 'Laptop Acer Aspire 3 A315 58 54XF i5 1135G7/8GB/512GB/Win11', 'NX_AM0SV_007.png', 13990000, 0, '2024-04-19 08:03:05', '2024-04-20 09:30:54', NULL, 'testadmin1', 'ACER', 1),
+('NX_HS5SV_00K', 'Laptop Acer Aspire 3 A315 56 32TP i3 1005G1/4GB/256GB/Win11', 'NX_HS5SV_00K.jpg', 11990000, 0, '2024-04-19 08:29:46', '2024-04-20 09:31:01', NULL, 'testadmin1', 'ACER', 1),
+('NX_KAGSV_001', 'Laptop Acer Aspire 3 A315 57 379K i3 1005G1/4GB/256GB/Win11', 'NX_KAGSV_001.jpg', 11990000, 0, '2024-04-19 08:14:54', '2024-04-20 09:31:06', NULL, 'testadmin1', 'ACER', 1),
+('V_730_2G_PL', 'VGA Palit GT 730 2GB SDDR3 64-bit VGA-DVI-HDMI', 'V_730_2G_PL.jpg', 990000, 0, '2024-05-03 14:38:48', NULL, NULL, 'testadmin1', 'NVIDIA', 7);
 
 -- --------------------------------------------------------
 
@@ -364,7 +364,7 @@ CREATE TABLE `product_warranty` (
 --
 
 INSERT INTO `product_warranty` (`product_id`, `purchased_at`, `warranty_period`, `product_line`) VALUES
-('AMDRZ1', '2023-05-05', NULL, 'AMD_RZ_5_3600_B_CT'),
+('AMDRZ1', '2024-05-05', NULL, 'AMD_RZ_5_3600_B_CT'),
 ('AMDRZ2', NULL, NULL, 'AMD_RZ_5_3600_B_CT'),
 ('K123172489FAN', NULL, NULL, 'MSI_GF65_2'),
 ('PD1', NULL, NULL, 'MSI_GF65_2'),
@@ -420,7 +420,7 @@ CREATE TABLE `userorder` (
 --
 
 INSERT INTO `userorder` (`OrderID`, `Username`, `Created_at`, `Status`, `Total`, `Confirmed_by`) VALUES
-(5, 'testadmin1', '2023-05-05 07:08:06', 5, 4390000, NULL);
+(5, 'testadmin1', '2024-05-05 07:08:06', 5, 4390000, NULL);
 
 --
 -- Indexes for dumped tables

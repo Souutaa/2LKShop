@@ -108,7 +108,7 @@
   </nav>
 </section>
 
-<script src="/2LKShop/public/js/filter.js"></script>
+<!-- <script src="/2LKShop/public/js/filter.js"></script> -->
 <script src="/2LKShop/public/js/productPagination.js"></script>
 <script src="https://unpkg.com/nouislider@10.0.0/distribute/nouislider.min.js"></script>
 

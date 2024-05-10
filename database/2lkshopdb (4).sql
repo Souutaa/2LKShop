@@ -40,10 +40,10 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`Username`, `Password`, `Created_at`, `Modified_at`, `Deleted_at`) VALUES
-('testadmin1', 'testadmin1', '2023-04-02 06:34:58', '2023-04-02 06:39:10', NULL),
-('testadmin2', 'testadmin2', '2023-04-02 06:34:58', NULL, NULL),
-('testuser1', 'testuser1', '2023-04-02 06:34:41', NULL, NULL),
-('testuser2', 'testuser2', '2023-04-02 06:34:41', NULL, NULL);
+('testadmin1', 'testadmin1', '2024-04-02 06:34:58', '2024-04-02 06:39:10', NULL),
+('testadmin2', 'testadmin2', '2024-04-02 06:34:58', NULL, NULL),
+('testuser1', 'testuser1', '2024-04-02 06:34:41', NULL, NULL),
+('testuser2', 'testuser2', '2024-04-02 06:34:41', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -107,9 +107,9 @@ CREATE TABLE `accounttype` (
 --
 
 INSERT INTO `accounttype` (`accountTypeID`, `TypeName`, `created_at`, `modified_at`, `Deleted_at`) VALUES
-('ADMIN', 'For administration the web page', '2023-04-02 06:44:39', NULL, NULL),
-('CUSTOMER', 'default for new account created by customer', '2023-04-02 06:44:39', NULL, NULL),
-('EMPLOYEE', 'For employee with basic functionality', '2023-04-02 06:45:04', NULL, NULL);
+('ADMIN', 'For administration the web page', '2024-04-02 06:44:39', NULL, NULL),
+('CUSTOMER', 'default for new account created by customer', '2024-04-02 06:44:39', NULL, NULL),
+('EMPLOYEE', 'For employee with basic functionality', '2024-04-02 06:45:04', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -202,10 +202,10 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`Product_Line`, `Product_Name`, `Price`, `Discount`, `Created_at`, `Modified_at`, `Deleted_at`, `Created_by`, `BrandID`, `Category`) VALUES
-('MSI_GF65_2', 'Laptop MSI Gaming GF65 Thin 10UE i5 10500H/16GB/512GB/6GB RTX3060 Max-Q/144Hz/Balo/Win10 (286VN)', 29490000, 0, '2023-04-02 13:08:29', NULL, NULL, 'testadmin1', 'MSI', 1),
-('MSI_GK20', 'Bàn Phím Có dây Gaming MSI Vigor GK20 US', 700000, 0, '2023-04-02 13:10:32', NULL, NULL, 'testadmin2', 'MSI', 3),
-('MSI_GM08', 'Chuột Có dây Gaming MSI Clutch GM08 Đen', 420000, 50, '2023-04-02 13:10:32', NULL, NULL, 'testadmin2', 'MSI', 4),
-('MSI_M14_10', 'Laptop MSI Modern 14 B11MOU i3 1115G4/8GB/256GB/Win11 (1027VN)', 13790000, 20, '2023-04-02 13:08:29', NULL, NULL, 'testadmin1', 'MSI', 1);
+('MSI_GF65_2', 'Laptop MSI Gaming GF65 Thin 10UE i5 10500H/16GB/512GB/6GB RTX3060 Max-Q/144Hz/Balo/Win10 (286VN)', 29490000, 0, '2024-04-02 13:08:29', NULL, NULL, 'testadmin1', 'MSI', 1),
+('MSI_GK20', 'Bàn Phím Có dây Gaming MSI Vigor GK20 US', 700000, 0, '2024-04-02 13:10:32', NULL, NULL, 'testadmin2', 'MSI', 3),
+('MSI_GM08', 'Chuột Có dây Gaming MSI Clutch GM08 Đen', 420000, 50, '2024-04-02 13:10:32', NULL, NULL, 'testadmin2', 'MSI', 4),
+('MSI_M14_10', 'Laptop MSI Modern 14 B11MOU i3 1115G4/8GB/256GB/Win11 (1027VN)', 13790000, 20, '2024-04-02 13:08:29', NULL, NULL, 'testadmin1', 'MSI', 1);
 
 -- --------------------------------------------------------
 

@@ -5,7 +5,7 @@
         <div class="page-title-right">
           <ol class="breadcrumb m-0">
             <li class="breadcrumb-item">
-              <a href="javascript: void(0);">TechShop</a>
+              <a href="javascript: void(0);">2LKSHOP</a>
             </li>
 
             <li class="breadcrumb-item active">Products</li>
@@ -23,12 +23,12 @@
           <div class="row mb-2">
             <div class="col-sm-4">
             <?php
-              if (isLoggedIn() && in_array('P_Create', $user->getPermissions())):
-            ?>
-              <button type="button" class="btn btn-primary" id="add-product-btn" data-bs-toggle="modal"
-                data-bs-target="#add-new-product">
-                Add product
-              </button>
+            if (isLoggedIn() && in_array('P_Create', $user->getPermissions())):
+              ?>
+                <button type="button" class="btn btn-primary" id="add-product-btn" data-bs-toggle="modal"
+                  data-bs-target="#add-new-product">
+                  Add product
+                </button>
             <?php endif ?>
             </div>
           </div>
@@ -48,79 +48,79 @@
               </thead>
               <tbody>
                 <?php foreach ($productList->productList as $product): ?>
-                  <tr>
-                    <td>
-                      <img src="/2LKShop/public/images/thumbNail/<?php echo $product->getThumbnail() ?>"
-                        alt="<?php echo $product->getProductName() ?>" title="<?php echo $product->getProductName() ?>"
-                        class="rounded me-3" height="48" />
-                      <p class="m-0 d-inline-block align-middle font-16 text-wrap w-75">
-                        <?php echo $product->getProductName() ?>
-                      </p>
-                    </td>
-                    <td>
-                      <?php echo $product->getCategoryName() ?>
-                    </td>
-                    <td>
-                      <?php echo $product->getCreatedAt() ?>
-                    </td>
-                    <td>
-                      <?php echo number_format($product->getPrice()) ?>đ
-                    </td>
+                    <tr>
+                      <td>
+                        <img src="/2LKShop/public/images/thumbNail/<?php echo $product->getThumbnail() ?>"
+                          alt="<?php echo $product->getProductName() ?>" title="<?php echo $product->getProductName() ?>"
+                          class="rounded me-3" height="48" />
+                        <p class="m-0 d-inline-block align-middle font-16 text-wrap w-75">
+                          <?php echo $product->getProductName() ?>
+                        </p>
+                      </td>
+                      <td>
+                        <?php echo $product->getCategoryName() ?>
+                      </td>
+                      <td>
+                        <?php echo $product->getCreatedAt() ?>
+                      </td>
+                      <td>
+                        <?php echo number_format($product->getPrice()) ?>đ
+                      </td>
 
-                    <td>
-                      <?php if ($product->getStock() == null): ?>
-                        0
-                      <?php else: ?>
-                        <?php echo ($product->getStock()) ?>
-                      <?php endif ?>
-                    </td>
-                    <td>
-                      <?php if ($product->getDeletedAt() == null): ?>
-                        <span class="badge bg-success">
-                          Actived
-                        </span>
-                      <?php else: ?>
-                        <span class="badge bg-danger">
-                          Deactived
-                        </span>
-                      <?php endif ?>
-                    </td>
+                      <td>
+                        <?php if ($product->getStock() == null): ?>
+                            0
+                        <?php else: ?>
+                            <?php echo ($product->getStock()) ?>
+                        <?php endif ?>
+                      </td>
+                      <td>
+                        <?php if ($product->getDeletedAt() == null): ?>
+                            <span class="badge bg-success">
+                              Actived
+                            </span>
+                        <?php else: ?>
+                            <span class="badge bg-danger">
+                              Deactived
+                            </span>
+                        <?php endif ?>
+                      </td>
 
-                    <td class="table-action">
-                      <button type="button" class="action-icon btn" data-bs-toggle="modal" data-bs-target="#see-product"
-                        id="see-product-selected" data-product-id="<?php echo $product->getProductLine() ?>">
-                        <i class="mdi mdi-eye"></i>
-                      </button>
-                      <?php if ($product->getDeletedAt() == null): ?>
-                        <?php
-                          if (isLoggedIn() && in_array('P_Edit', $user->getPermissions())):
-                        ?>
-                          <button type="button" class="action-icon btn" data-bs-toggle="modal"
-                            data-bs-target="#change-product" 
-                            data-product-id="<?php echo $product->getProductLine() ?>">
-                            <i class="mdi mdi-square-edit-outline"></i>
-                          </button>
+                      <td class="table-action">
+                        <button type="button" class="action-icon btn" data-bs-toggle="modal" data-bs-target="#see-product"
+                          id="see-product-selected" data-product-id="<?php echo $product->getProductLine() ?>">
+                          <i class="mdi mdi-eye"></i>
+                        </button>
+                        <?php if ($product->getDeletedAt() == null): ?>
+                            <?php
+                            if (isLoggedIn() && in_array('P_Edit', $user->getPermissions())):
+                              ?>
+                                <button type="button" class="action-icon btn" data-bs-toggle="modal"
+                                  data-bs-target="#change-product" 
+                                  data-product-id="<?php echo $product->getProductLine() ?>">
+                                  <i class="mdi mdi-square-edit-outline"></i>
+                                </button>
+                            <?php endif ?>
+                            <?php
+                            if (isLoggedIn() && in_array('P_AddQty', $user->getPermissions())):
+                              ?>
+                                <button type="button" class="action-icon btn" data-bs-toggle="modal"
+                                  data-bs-target="#update-quantity-product" id="update-quantity-product-selected"
+                                  data-product-id="<?php echo $product->getProductLine() ?>">
+                                  <i class="mdi mdi-database-plus"></i>
+                                </button>
+                            <?php endif ?>
+                            <?php
+                            if (isLoggedIn() && in_array('P_Delete', $user->getPermissions())):
+                              ?>
+                                <button type="button" class="action-icon btn delete-btn"
+                                  data-product-id="<?php echo $product->getProductLine() ?>">
+                                  <i class="mdi mdi-delete"></i>
+                                </button>
+                            <?php endif ?>
                         <?php endif ?>
-                        <?php
-                          if (isLoggedIn() && in_array('P_AddQty', $user->getPermissions())):
-                        ?>
-                          <button type="button" class="action-icon btn" data-bs-toggle="modal"
-                            data-bs-target="#update-quantity-product" id="update-quantity-product-selected"
-                            data-product-id="<?php echo $product->getProductLine() ?>">
-                            <i class="mdi mdi-database-plus"></i>
-                          </button>
-                        <?php endif ?>
-                        <?php
-                          if (isLoggedIn() && in_array('P_Delete', $user->getPermissions())):
-                        ?>
-                          <button type="button" class="action-icon btn delete-btn"
-                            data-product-id="<?php echo $product->getProductLine() ?>">
-                            <i class="mdi mdi-delete"></i>
-                          </button>
-                        <?php endif ?>
-                      <?php endif ?>
-                    </td>
-                  </tr>
+                      </td>
+                    </tr>
                 <?php endforeach ?>
               </tbody>
             </table>
@@ -176,7 +176,7 @@
               <select class="form-select" name="warranty" id="example-select">
                 <option value='null'>Không có bảo hành</option>
                 <?php foreach ($warrantyList->warrantyList as $warranty): ?>
-                  <option value=<?php echo $warranty->getWarrantyId() ?>><?php echo $warranty->getMonths() ?> Tháng</option>
+                    <option value=<?php echo $warranty->getWarrantyId() ?>><?php echo $warranty->getMonths() ?> Tháng</option>
                 <?php endforeach; ?>
               </select>
             </div>
@@ -186,7 +186,7 @@
               <label for="example-select" class="form-label">Brand</label>
               <select class="form-select" name="brand" id="example-select">
                 <?php foreach ($brands->brandList as $brand): ?>
-                  <option value=<?php echo $brand->id ?>><?php echo $brand->name ?></option>
+                    <option value=<?php echo $brand->id ?>><?php echo $brand->name ?></option>
                 <?php endforeach; ?>
               </select>
             </div>
@@ -194,8 +194,8 @@
               <label for="example-select" class="form-label">Category</label>
               <select class="form-select" name="category" id="example-select">
                 <?php foreach ($categories->categories as $category): ?>
-                  <option value=<?php echo $category->getCategoryID() ?>><?php echo $category->getCategoryName() ?>
-                  </option>
+                    <option value=<?php echo $category->getCategoryID() ?>><?php echo $category->getCategoryName() ?>
+                    </option>
                 <?php endforeach; ?>
               </select>
             </div>
@@ -258,41 +258,41 @@
     <?php
     if (isLoggedIn() && in_array('P_Delete', $user->getPermissions())):
       ?>
-      $('.delete-btn').click(function (e) {
-        let id = $(this).attr('data-product-id');
-        Swal.fire({
-          title: 'Do you want to delete this product?',
-          showCancelButton: true,
-          confirmButtonText: 'Delete',
-        }).then((result) => {
-          if (result.isConfirmed) {
-            $.ajax({
-              method: 'POST',
-              url: "<?php echo getPath($routes, 'deleteProduct') ?>".replace('{id}', id),
-              success: (function (res) {
-                Swal.fire({
-                  title: 'Success!',
-                  text: 'Product successfully deleted!',
-                  icon: 'success',
-                  confirmButtonTeNxt: 'Cool!'
-                }).then(() => {
-                  location.reload();
-                })
-              }),
-            })
-          }
-        })
+        $('.delete-btn').click(function (e) {
+          let id = $(this).attr('data-product-id');
+          Swal.fire({
+            title: 'Do you want to delete this product?',
+            showCancelButton: true,
+            confirmButtonText: 'Delete',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              $.ajax({
+                method: 'POST',
+                url: "<?php echo getPath($routes, 'deleteProduct') ?>".replace('{id}', id),
+                success: (function (res) {
+                  Swal.fire({
+                    title: 'Success!',
+                    text: 'Product successfully deleted!',
+                    icon: 'success',
+                    confirmButtonTeNxt: 'Cool!'
+                  }).then(() => {
+                    location.reload();
+                  })
+                }),
+              })
+            }
+          })
 
-      })
-    <?php else: ?>
-      $('.delete-btn').click(function (e) {
-        Swal.fire({
-          title: 'Error!',
-          text: 'You don\'t have the permission to delete product!',
-          icon: 'error',
-          confirmButtonText: 'OK'
         })
-      })
+    <?php else: ?>
+        $('.delete-btn').click(function (e) {
+          Swal.fire({
+            title: 'Error!',
+            text: 'You don\'t have the permission to delete product!',
+            icon: 'error',
+            confirmButtonText: 'OK'
+          })
+        })
     <?php endif; ?>
 
     $('#add-product-btn').click(function (e) {
@@ -315,7 +315,7 @@
       $('#create-form').submit(function (e) {
         e.preventDefault();
         var formData = new FormData(this);
-        formData.append('userID', "<?php echo $user->getUsername()?>")
+        formData.append('userID', "<?php echo $user->getUsername() ?>")
         $.ajax({
           type: "POST",
           url: "<?php echo getPath($routes, 'createProduct') ?>",

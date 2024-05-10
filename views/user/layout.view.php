@@ -45,50 +45,50 @@ if (isLoggedIn()) {
         </div>
         <form class="search__form">
           <?php if ($_SESSION['showNav'] == true): ?>
-                                                                                                                  <input type="text" class="fontAwesome search__input" name="searchInformation"
-                                                                                                                    placeholder="&#xf002;   Search" />
+                                                                                                                    <input type="text" class="fontAwesome search__input" name="searchInformation"
+                                                                                                                      placeholder="&#xf002;   Search" />
           <?php endif ?>
         </form>
         <nav class="nav-user">
           <?php if ($_SESSION['isLoggedIn'] == true): ?>
-                    <svg class="icon">
-                      <a class="nav-user__icon-box" href="<?php echo getPath($routes, 'viewCart') ?>">
-                        <use xlink:href="/2LKShop/public/images/SVG/symbol-defs.svg#icon-location-shopping"></use>
-                    </svg>
-                      <div class="nav-user__user">
-                        </a>
-                                                                                                                    <!-- <img src="/2LKShop/public/images/productImg/Image.png" alt="User photo" class="nav-user__user-photo" /> -->
-                                                                                                                    <?php
-                                                                                                                    checkImg($user)
-                                                                                                                      ?>
-                                                                                                                    <ul class="nav-user__dropdown">
-                                                                                                                      <li class="nav-user__user-info">
-                                                                                                                        <h3 class="nav-user__user-name font-size-4 text-color--1">
-                                                                                                                          <?php echo $user->getUsername(); ?>
-                                                                                                                        </h3>
-                                                                                                                        <span class="nav-user__user-email font-size-3 text-color--4">
-                                                                                                                          <?php echo $user->getEmail(); ?>
-                                                                                                                        </span>
-                                                                                                                      </li>
-                                                                                                                      <li class="nav-user__options">
-                                                                                                                        <a href="<?php echo $routes->get('viewOrders')->getPath() ?>" class="nav-user__option font-size-2">Đơn
-                                                                                                                          hàng</a>
-                                                                                                                        <a href="<?php echo $routes->get('viewPersonalInfo')->getPath() ?>"
-                                                                                                                          class="nav-user__option font-size-2">Thông tin cá nhân</a>
-                                                                                                                      </li>
-                                                                                                                      <li class="nav-user__log-out">
-                                                                                                                        <a href="<?php echo $routes->get('logout')->getPath() ?>" class="log-out btn">
-                                                                                                                          <i class="fa-solid fa-right-from-bracket color--red font-size-1"></i>
-                                                                                                                          <span class="color--red font-size-2">Sign Out</span>
-                                                                                                                        </a>
-                                                                                                                      </li>
-                                                                                                                    </ul>
-                                                                                                                  </div>
-                                                                                                                </nav>
+                      <svg class="icon">
+                        <a class="nav-user__icon-box" href="<?php echo getPath($routes, 'viewCart') ?>">
+                          <use xlink:href="/2LKShop/public/images/SVG/symbol-defs.svg#icon-location-shopping"></use>
+                      </svg>
+                        <div class="nav-user__user">
+                          </a>
+                                                                                                                      <!-- <img src="/2LKShop/public/images/productImg/Image.png" alt="User photo" class="nav-user__user-photo" /> -->
+                                                                                                                      <?php
+                                                                                                                      checkImg($user)
+                                                                                                                        ?>
+                                                                                                                      <ul class="nav-user__dropdown">
+                                                                                                                        <li class="nav-user__user-info">
+                                                                                                                          <h3 class="nav-user__user-name font-size-4 text-color--1">
+                                                                                                                            <?php echo $user->getUsername(); ?>
+                                                                                                                          </h3>
+                                                                                                                          <span class="nav-user__user-email font-size-3 text-color--4">
+                                                                                                                            <?php echo $user->getEmail(); ?>
+                                                                                                                          </span>
+                                                                                                                        </li>
+                                                                                                                        <li class="nav-user__options">
+                                                                                                                          <a href="<?php echo $routes->get('viewOrders')->getPath() ?>" class="nav-user__option font-size-2">Đơn
+                                                                                                                            hàng</a>
+                                                                                                                          <a href="<?php echo $routes->get('viewPersonalInfo')->getPath() ?>"
+                                                                                                                            class="nav-user__option font-size-2">Thông tin cá nhân</a>
+                                                                                                                        </li>
+                                                                                                                        <li class="nav-user__log-out">
+                                                                                                                          <a href="<?php echo $routes->get('logout')->getPath() ?>" class="log-out btn">
+                                                                                                                            <i class="fa-solid fa-right-from-bracket color--red font-size-1"></i>
+                                                                                                                            <span class="color--red font-size-2">Sign Out</span>
+                                                                                                                          </a>
+                                                                                                                        </li>
+                                                                                                                      </ul>
+                                                                                                                    </div>
+                                                                                                                  </nav>
         <?php endif ?>
         <?php if ($_SESSION['isLoggedIn'] == false): ?>
-                                                                                                                <a href="login" class="btn btn__secondary">Đăng nhập</a>
-                                                                                                                <a href="register" class="btn btn__secondary btn__secondary--active">Đăng kí</a>
+                                                                                                                  <a href="login" class="btn btn__secondary">Đăng nhập</a>
+                                                                                                                  <a href="register" class="btn btn__secondary btn__secondary--active">Đăng kí</a>
         <?php endif ?>
         </nav>
       </div>
@@ -175,7 +175,7 @@ if (isLoggedIn()) {
         </div>
         <div class="footer__right">
           <div class="footer__contact">
-            <h3 class="heading__territory u-margin-bottom-big">Techshop</h3>
+            <h3 class="heading__territory u-margin-bottom-big">2LKSHOP</h3>
 
             <a href="#" class="para--sm text--hover u-margin-bottom-small">About Us</a>
             <a href="#" class="para--sm text--hover u-margin-bottom-small">Contact Us</a>
@@ -188,15 +188,15 @@ if (isLoggedIn()) {
             <a href="#" class="para--sm text--hover u-margin-bottom-small">Privacy Policy</a>
           </div>
           <div class="footer__contact">
-            <h3 class="heading__territory u-margin-bottom-big">Techshop</h3>
+            <h3 class="heading__territory u-margin-bottom-big">2LKSHOP</h3>
 
-            <a href="#" class="para--sm text--hover u-margin-bottom-small">support@techshop.com</a>
+            <a href="#" class="para--sm text--hover u-margin-bottom-small">support@2LKSHOP.com</a>
             <a href="#" class="para--sm text--hover u-margin-bottom-small">The
             </a>
           </div>
         </div>
         <div class="copyright u-margin-top-big">
-          &copy; 2023. All rights reserved
+          &copy; 2024. All rights reserved
         </div>
       </div>
     </footer>

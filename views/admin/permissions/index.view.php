@@ -6,7 +6,7 @@
         <div class="page-title-right">
           <ol class="breadcrumb m-0">
             <li class="breadcrumb-item">
-              <a href="javascript: void(0);">Techshop</a>
+              <a href="javascript: void(0);">2LKSHOP</a>
             </li>
 
             <li class="breadcrumb-item active">Permission</li>
@@ -28,9 +28,11 @@
                 <label for="status-select" class="me-2">Nhóm người dùng</label>
                 <select class="form-select" id="role-select">
                   <option>---Chọn nhóm người dùng---</option>
-                  <?php foreach($roles->roles as $role):?>
-                    <option data-role-id="<?php echo $role->getRoleId()?>"><?php echo $role->getRoleName()?></option>
-                  <?php endforeach?>
+                  <?php foreach ($roles->roles as $role): ?>
+                    <?php if($role->getDisabled() == 0): ?>
+                      <option data-role-id="<?php echo $role->getRoleId() ?>"><?php echo $role->getRoleName() ?></option>
+                    <?php endif ?>
+                  <?php endforeach ?>
                 </select>
               </div>
             </div>

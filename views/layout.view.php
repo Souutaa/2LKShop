@@ -151,7 +151,7 @@ if (isLoggedIn()) {
           </div>
         </div>
         <div class="copyright u-margin-top-big">
-          &copy; 2023. All rights reserved
+          &copy; 2024. All rights reserved
         </div>
       </div>
     </footer>

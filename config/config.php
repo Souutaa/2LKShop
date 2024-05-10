@@ -12,5 +12,6 @@ define('DB_USER', 'root');
 define('DB_PASS', '');
 
 define('ADMINPRODUCT', '/admin/product');
-define('ADMINBRAND', '/admin/brands');
+define('ADMINBRANDS', '/admin/brands');
+define('ADMINBRAND', '/admin/brand');
 define('ADMINCATEGORY', '/admin/category');

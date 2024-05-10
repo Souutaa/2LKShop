@@ -36,7 +36,7 @@
                       echo "checked" ?> data-switch="success" 
                       data-permission-id="<?php echo $permission->getPermissionId()?>"
                       />
-                      <label for="<?php echo $permission->getPermissionId()?>" data-on-label="Yes" data-off-label="No"></label>
+                      <label for="<?php echo $permission->getPermissionId()?>" data-on-label="On" data-off-label="Off"></label>
                     <?php else: ?>
                       <?php if((in_array($permission->getPermissionId(), $permissions->activePermission))) echo '<span class="badge badge-success-lighten">Active</span>';
                             else echo '<span class="badge badge-danger-lighten">Deactive</span>'
