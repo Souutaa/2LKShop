@@ -90,9 +90,11 @@ if (isLoggedIn()) {
       <div class="col-sm-6">
         <label for="example-select" class="form-label">Warranty Period</label>
         <select class="form-select" name="warranty" id="example-select">
-          <option value='none'>Không có bảo hành</option>
+          <!-- <option value='none'>Không có bảo hành</option> -->
           <?php foreach ($warrantyList->warrantyList as $warranty): ?>
-            <option value=<?php echo $warranty->getWarrantyId() ?>><?php echo $warranty->getMonths() ?> Tháng</option>
+            <option value="<?php echo $warranty->getWarrantyId() ?>" 
+            <?php if ($warranty->getWarrantyId() == $product->getWarrantyId())
+                  echo "selected" ?>><?php echo $warranty->getMonths() ?> Tháng</option>
           <?php endforeach; ?>
         </select>
       </div>
@@ -102,9 +104,10 @@ if (isLoggedIn()) {
         <label for="example-select" class="form-label">Brand</label>
         <select class="form-select" name="brand" id="example-select">
           <?php foreach ($brands->brandList as $brand): ?>
+            <?php if($brand->delete_at == null): ?>
             <option value="<?php echo $brand->id ?>" <?php if ($brand->id == $product->getBrandID())
-                 echo "selected" ?>>
-              <?php echo $brand->name ?></option>
+                echo "selected" ?>> <?php echo $brand->name ?></option>
+            <?php endif ?>
           <?php endforeach; ?>
         </select>
       </div>
@@ -112,8 +115,11 @@ if (isLoggedIn()) {
         <label for="example-select" class="form-label">Category</label>
         <select class="form-select" name="category" id="example-select">
           <?php foreach ($categories->categories as $category): ?>
-            <option value="<?php echo $category->getCategoryID() ?>" <?php if ($category->getCategoryName() == $product->getCategoryName())
-                 echo "selected" ?>><?php echo $category->getCategoryName() ?></option>
+            <?php if ($category->getCategoryDeleteAt() == null): ?>
+              <option value="<?php echo $category->getCategoryID() ?>" 
+              <?php if ($category->getCategoryName() == $product->getCategoryName())
+                echo "selected" ?>><?php echo $category->getCategoryName() ?></option>
+            <?php endif ?>
           <?php endforeach; ?>
         </select>
       </div>

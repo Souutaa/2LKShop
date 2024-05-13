@@ -174,7 +174,6 @@
             <div class="col-sm-6">
               <label for="example-select" class="form-label">Warranty Period</label>
               <select class="form-select" name="warranty" id="example-select">
-                <option value='null'>Không có bảo hành</option>
                 <?php foreach ($warrantyList->warrantyList as $warranty): ?>
                     <option value=<?php echo $warranty->getWarrantyId() ?>><?php echo $warranty->getMonths() ?> Tháng</option>
                 <?php endforeach; ?>
@@ -186,6 +185,7 @@
               <label for="example-select" class="form-label">Brand</label>
               <select class="form-select" name="brand" id="example-select">
                 <?php foreach ($brands->brandList as $brand): ?>
+                  <?php if($brand->delete_at == null) ?>
                     <option value=<?php echo $brand->id ?>><?php echo $brand->name ?></option>
                 <?php endforeach; ?>
               </select>
@@ -194,8 +194,10 @@
               <label for="example-select" class="form-label">Category</label>
               <select class="form-select" name="category" id="example-select">
                 <?php foreach ($categories->categories as $category): ?>
+                  <?php if($category->getCategoryDeleteAt() == null): ?>
                     <option value=<?php echo $category->getCategoryID() ?>><?php echo $category->getCategoryName() ?>
                     </option>
+                  <?php endif ?>
                 <?php endforeach; ?>
               </select>
             </div>

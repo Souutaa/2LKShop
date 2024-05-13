@@ -34,24 +34,24 @@
         <div class="form__field-box">
           <div class="form__field u-margin-bottom-medium">
             <label for="firstName" class="form__label u-margin-bottom-small">Họ:</label>
-            <input type="text" id="firstName" name="firstName" placeholder="Nguyễn Văn" class="form__input" />
+            <input type="text" value="<?php echo $user->getCurrentLastNameInDB($user->getUsername())[0] ?>" id="firstName" name="firstName" placeholder="Nguyễn Văn" class="form__input" />
             <span class="error-message font-error"></span>
           </div>
           <div class="form__field u-margin-bottom-medium">
             <label for="lastName" class="form__label u-margin-bottom-small">Tên:</label>
-            <input type="text" id="lastName" name="lastName" placeholder="A" class="form__input" />
+            <input type="text" value="<?php echo $user->getCurrentfirstNameInDB($user->getUsername())[0] ?>" id="lastName" name="lastName" placeholder="A" class="form__input" />
             <span class="error-message font-error"></span>
           </div>
         </div>
         <div class="form__field-box">
           <div class="form__field u-margin-bottom-medium">
             <label for="order__tel" class="form__label u-margin-bottom-small">Số điện thoại:</label>
-            <input type="tel" id="order__tel" name="phoneNumber" placeholder="0xx xxx xxxx" class="form__input" />
+            <input type="tel" value="<?php echo $user->getCurrentTelInDB($user->getUsername())[0]?>" id="order__tel" name="phoneNumber" placeholder="0xx xxx xxxx" class="form__input" />
             <span class="error-message font-error"></span>
           </div>
           <div class="form__field u-margin-bottom-medium">
             <label for="order__email" class="form__label u-margin-bottom-small">Email:</label>
-            <input type="email" id="order__email" name="mail" placeholder="abc@gmail.com" class="form__input" />
+            <input type="email" value="<?php echo $user->getCurrentEmailInDB($user->getUsername())[0] ?>" id="order__email" name="mail" placeholder="abc@gmail.com" class="form__input" />
             <span class="error-message font-error"></span>
           </div>
         </div>
@@ -72,7 +72,7 @@
         </div>
         <div class="form__field u-margin-bottom-medium">
           <label for="password" class="form__label u-margin-bottom-small">Địa chỉ chi tiết:</label>
-          <input type="text" id="order__address" name="detailedAddress"
+          <input type="text" value="<?php echo $user->getCurrentDetailedAddressInDB($user->getUsername())[0] ?>" id="order__address" name="detailedAddress"
           placeholder="Số nhà, tên đường, xã, phường, thị trấn,..." class="form__input" />
           <span class="error-message font-error"></span>
         </div>
@@ -130,6 +130,65 @@
   </div>
 </div>
 <script>
+
+  async function getProvincesHanlderValue() {
+    const provinceAPI = './public/json/provinces.json';
+    console.log(provinceAPI);
+    const res = await fetch(provinceAPI);
+    const jsonData = await res.json();
+    let valueProvince = '<?php echo $user->getCurrentCityInDB($user->getUsername())[0] ?>';
+    let valueDistrict = '<?php echo $user->getCurrentDistrictInDB($user->getUsername())[0] ?>';
+    let check = 0;
+    for (let i = 0; i < jsonData.length; i++) {
+      $("#order__address-city").append(`
+      <option value="${jsonData[i].name}" data-province-id="${i}">${jsonData[i].name}</option>
+      `)
+    }
+
+    for (let i = 0; i < jsonData.length; i++) {
+      if (valueProvince == jsonData[i].name) {
+        $("#order__address-city").val(jsonData[i].name);
+        $("#order__address-district").empty();
+        const provinceId = $('#order__address-city').find(":selected").attr('data-province-id')
+        for (let i = 0; i < jsonData[provinceId].districts.length; i++) {
+          $("#order__address-district").append(`
+        <option value="${jsonData[provinceId].districts[i].name}">${jsonData[provinceId].districts[i].name}</option>
+        `)
+        }
+        break;
+      }
+    }
+
+    $("#order__address-city").on('change', function() {
+      $("#order__address-district").empty();
+      const provinceId = $('#order__address-city').find(":selected").attr('data-province-id')
+      for (let i = 0; i < jsonData[provinceId].districts.length; i++) {
+        $("#order__address-district").append(`
+        <option value="${jsonData[provinceId].districts[i].name}">${jsonData[provinceId].districts[i].name}</option>
+        `)
+      }
+
+    });
+
+    // quận hiện tại của tài khoản đó
+    for (let i = 0; i < jsonData.length; i++) {
+      for (let index = 0; index < jsonData[i].districts.length; index++) {
+        if (jsonData[i].districts[index].name == valueDistrict) {
+          console.log(jsonData[i].districts[index].name);
+          check = 1;
+          break;
+        }
+      }
+      if (check == 1) {
+        $("#order__address-district").val(valueDistrict);
+        // console.log(valueDistrict);
+        break
+      }
+
+    }
+
+  }
+
   async function getProvincesHanlder() {
     const res = await fetch('./public/json/provinces.json');
     console.log(res)
@@ -168,9 +227,7 @@
     $('#price-reduce').text(formatPrice(cartTotal.discount))
     $('#price-last-total').text(formatPrice(cartTotal.total - cartTotal.discount))
 
-    getProvincesHanlder();
-
-    
+      getProvincesHanlderValue();  
 
 
     let formPay = document.querySelector('user-info-form')  
